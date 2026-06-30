@@ -14,6 +14,10 @@ for review.
   - `allread_eval.py`, `eval_contig_labels.py`  read- and contig-level evaluation
 - `refguided/`  reference-guided signature baseline (K=2 and K=3)
 - `drivers/`    end-to-end driver scripts, one per dataset (PolySplit, reference-guided, timing)
+- `baselines/`  wrappers + cluster-to-subgenome mapping + read-eval for the comparison methods
+  - `polycracker/{napus,tetraploid,hexaploid}/`  run polyCRACKER, map clusters to subgenomes (best 1:1), score
+  - `subphaser/{napus,tetraploid,hexaploid}/`     YaHS scaffold + SubPhaser (scaffold-first), score
+  These call the external tools polyCRACKER and SubPhaser, which must be installed separately.
 
 ## Dependencies
 Python 3 (numpy, scikit-learn, networkx) and the external tools Flye, bwa, samtools,
