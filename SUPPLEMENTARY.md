@@ -42,7 +42,7 @@ genuine homoeologs share long sequence tracts and occupy the extreme upper tail,
 from the background of incidental matches; the strong-edge cutoff $\tau_H$ (dashed line) retains the
 upper-tail edges as homoeolog links, and is read off this distribution rather than tuned on truth
 labels. The more contiguous HiFi assemblies push the homoeolog tail to higher $w_{\mathrm{kmer}}$.
-The *B. napus* (NAM0) panels are left blank pending its assembly runs.
+The *B. napus* (NAM0) panels are left blank  its assembly runs.
 
 ### Figure S4. Read-level confusion matrices across methods and species
 <p align="center"><img src="figures/FigS4_confusion_all.png" alt="Read-level confusion matrices, three species by four methods" width="100%"></p>
@@ -56,7 +56,7 @@ emit unlabelled clusters (polyCRACKER, SubPhaser), clusters are mapped to subgen
 one-to-one assignment to truth. **PolySplit** concentrates on the diagonal (99.0% tetraploid,
 96.2% hexaploid, using no reference), whereas **polyCRACKER** collapses the subgenomes into a single
 cluster (46.5%, 41.0%) and **SubPhaser** leaks or scrambles them (76.7%, 38.8%). The reference-guided
-panels and the entire *B. napus* (NAM0) row are left blank pending those runs.
+panels and the entire *B. napus* (NAM0) row are left blank  those runs.
 
 ## Supplementary Tables
 
@@ -67,12 +67,12 @@ placed-chromosome size.
 
 | Genome | reads | mixed Flye | separated (Σ subgenomes) | reference |
 |---|---|---|---|---|
-| *B. napus* NAM0 | ONT | _[pending]_ | _[pending]_ | 1008 |
-| *B. napus* NAM0 | HiFi | _[pending]_ | _[pending]_ | 1008 |
-| *C. microcarpa* (4×) | ONT | 365 | _[pending]_ | 384 |
-| *C. microcarpa* (4×) | HiFi | 360 | _[pending]_ | 384 |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[pending]_ | 608 |
-| *C. microcarpa* T1 (6×) | HiFi | 591 | _[pending]_ | 608 |
+| *B. napus* NAM0 | ONT | _[]_ | _[]_ | 1008 |
+| *B. napus* NAM0 | HiFi | _[]_ | _[]_ | 1008 |
+| *C. microcarpa* (4×) | ONT | 365 | _[]_ | 384 |
+| *C. microcarpa* (4×) | HiFi | 360 | _[]_ | 384 |
+| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[]_ | 608 |
+| *C. microcarpa* T1 (6×) | HiFi | 591 | _[]_ | 608 |
 
 ### Table S2. Per-subgenome precision, recall, and F1
 Breakdown of the macro-averaged values in main Table III. Abbreviations: P, precision; R, recall;
@@ -81,8 +81,8 @@ but are never false positives.
 
 | Genome | reads | subgenome | P | R | F1 |
 |---|---|---|---|---|---|
-| *B. napus* NAM0 | ONT | A | _[pending]_ | _[pending]_ | _[pending]_ |
-| *B. napus* NAM0 | ONT | C | _[pending]_ | _[pending]_ | _[pending]_ |
+| *B. napus* NAM0 | ONT | A | _[]_ | _[]_ | _[]_ |
+| *B. napus* NAM0 | ONT | C | _[]_ | _[]_ | _[]_ |
 | *C. microcarpa* (4×) | ONT | S1 | _[ ]_ | _[ ]_ | 97.8 |
 | *C. microcarpa* (4×) | ONT | S2 | _[ ]_ | _[ ]_ | 97.8 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S1 | 99.6 | 88.7 | 93.8 |
@@ -98,27 +98,27 @@ scaffold-first assembly is chimeric (low purity, high duplication).
 
 | Assembly | Size Mb (% exp.) | Contigs | N50 | BUSCO C% (D%) | Back-map % | Purity % |
 |---|---|---|---|---|---|---|
-| *B. napus* A (exp. 419) | _[pending]_ | | | | | |
-| *B. napus* C (exp. 559) | _[pending]_ | | | | | |
-| *C. microcarpa* 4× SG1 (exp. 188) | _[pending]_ | | | | | |
-| *C. microcarpa* 4× SG2 (exp. 172) | _[pending]_ | | | | | |
-| *C. microcarpa* 6× SG1 (exp. 188) | _[pending]_ | | | | | |
-| *C. microcarpa* 6× SG2 (exp. 172) | _[pending]_ | | | | | |
-| *C. microcarpa* 6× SG3 (exp. 227) | _[pending]_ | | | | | |
+| *B. napus* A (exp. 419) | _[]_ | | | | | |
+| *B. napus* C (exp. 559) | _[]_ | | | | | |
+| *C. microcarpa* 4× SG1 (exp. 188) | _[]_ | | | | | |
+| *C. microcarpa* 4× SG2 (exp. 172) | _[]_ | | | | | |
+| *C. microcarpa* 6× SG1 (exp. 188) | _[]_ | | | | | |
+| *C. microcarpa* 6× SG2 (exp. 172) | _[]_ | | | | | |
+| *C. microcarpa* 6× SG3 (exp. 227) | _[]_ | | | | | |
 
 
 ### Table S4. Parameter sensitivity
 Read accuracy under variation of each fixed threshold around its default, holding the others fixed;
-defaults in **bold**. Demonstrates that no result hinges on a tuned value. _[pending: sweep to run]_
+defaults in **bold**. Demonstrates that no result hinges on a tuned value. _[: sweep to run]_
 
 | Parameter | values tested | read accuracy |
 |---|---|---|
-| signature copy cap $f_{\max}$ | 2 / **3** / 5 | _[pending]_ |
-| min signature hits $t$ | 2 / **3** / 5 | _[pending]_ |
-| dominance ratio $\rho$ | 2 / **3** / 4 | _[pending]_ |
-| block floor (Mb) | 1 / **3** / 5 | _[pending]_ |
-| recovery floor $\alpha$ | 0.50 / **0.55** / 0.60 | _[pending]_ |
-| read confidence $\beta$ | 0.55 / **0.60** / 0.65 | _[pending]_ |
+| signature copy cap $f_{\max}$ | 2 / **3** / 5 | _[]_ |
+| min signature hits $t$ | 2 / **3** / 5 | _[]_ |
+| dominance ratio $\rho$ | 2 / **3** / 4 | _[]_ |
+| block floor (Mb) | 1 / **3** / 5 | _[]_ |
+| recovery floor $\alpha$ | 0.50 / **0.55** / 0.60 | _[]_ |
+| read confidence $\beta$ | 0.55 / **0.60** / 0.65 | _[]_ |
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;
