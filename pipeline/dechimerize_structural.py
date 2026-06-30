@@ -24,7 +24,7 @@ import sys, pickle, os
 from collections import defaultdict
 import networkx as nx
 from networkx.algorithms.community import louvain_communities
-from hapAsm.Assembly.Assembly.polysplit.anon_release.pipeline.decloud_blocks_v2 import (contig_repeat_counts, label_eval,
+from decloud_blocks_v2 import (contig_repeat_counts, label_eval,
                                MIN_LEN, MIN_BLOCK, MIN_SUB, K, MC_CONTIG,
                                RES, SUBRES, PAIR_MIN, MAX_ITERS)
 
