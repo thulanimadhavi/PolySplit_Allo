@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""Build a SubPhaser config (one homoeologous group per line, NSG columns) for de-novo YaHS
-scaffolds. SubPhaser REQUIRES every row to have exactly NSG chromosomes (= number of subgenomes).
-Reference-free, so we group the chromosome-scale scaffolds greedily by self-alignment score
-(scaf_pairs.tsv): each scaffold is grouped with its top (NSG-1) highest-scoring unused homoeolog
-partners. Generalized to any NSG (2 = tetraploid pairs, 3 = hexaploid triples). Scaffolds that
-cannot reach NSG members from scored partners are packed into leftover rows, and any final
-remainder (< NSG) is dropped, which is the honest scaffold-first limitation when YaHS fuses
-homoeologous chromosomes. Usage: build_config.py <fai> <scaf_pairs.tsv> <out.config> [minlen] [nsg]
-"""
 import sys
 from collections import defaultdict
 

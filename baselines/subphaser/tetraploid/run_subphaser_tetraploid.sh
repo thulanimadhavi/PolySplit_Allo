@@ -1,17 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# scaffold-first (YaHS + SubPhaser) baseline -- Camelina tetraploid.
-# Same recipe as the napus baseline, on the SAME Flye assembly + Hi-C as PolySplit.
-#   1 YaHS scaffold the Flye contigs (reuses polysplit_run/hic.nsort.bam)
-#   2 self-align the chromosome-scale scaffolds -> scaf_pairs.tsv
-#   3 build the SubPhaser homoeolog-pair config
-#   4 SubPhaser -just_core  -> per-scaffold subgenome calls
-#   5 score (scaffold SG -> oracle S1/S2 -> contigs) + 6 read-level via Step-7 propagate
-#
-# RUN on nugget (heavy: YaHS, minimap2, jellyfish):
-#   nohup bash run_subphaser_tetraploid.sh > run.log 2>&1 &
-# Idempotent: each stage skips if its output exists. MINLEN tunable (default 5 Mb).
-# ============================================================================
 set -uo pipefail
 WORK=$DATA/camelina/Tetraploid_data/subphaser_baseline
 RUN=$DATA/camelina/Tetraploid_data/polysplit_run

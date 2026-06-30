@@ -1,22 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# Reference-guided baseline (precision ceiling), hexaploid Camelina (CmiT1, K=3).
-# Exact napus/tetraploid signature method, generalized to 3 subgenomes:
-#   reference chromosomes -> gsufsort GSA+LCP -> subgenome-SPECIFIC k=33 signatures
-#   (S1/S2/S3, using the reference's chromosome->subgenome labels) -> classify reads
-#   by signature hits -> evaluate vs S1/S2/S3 truth (Acc/Prec/Rec/F1 via allread_eval).
-#
-# This is the ceiling that USES the reference labels (which PolySplit cannot). It should
-# separate S1/S2 where reference-free cannot, because the labels pin the diagnostic k-mers.
-#
-# RUN ON NUGGET. Heavy: gsufsort index of the 608 Mb reference (~7 GB GSA), large signature
-# sets (multi-GB), and a 35 GB read scan. Needs ample RAM (tens of GB) + disk.
-#
-#   ssh nugget
-#   cd $POLYSPLIT
-#   nohup bash run_refguided_hexaploid.sh > refguided_hexaploid.log 2>&1 &
-#   tail -f refguided_hexaploid.log
-# ============================================================================
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA

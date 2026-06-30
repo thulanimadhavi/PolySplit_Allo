@@ -1,15 +1,4 @@
 #!/usr/bin/env python3
-"""Score SubPhaser's per-scaffold subgenome calls (de-novo YaHS scaffolds) against S1/S2 truth.
-Adapted from the napus score_subphaser_denovo.py: TRUTH + AGP are now arguments.
-
-SubPhaser output (*.chrom-subgenome.tsv): <chrom> <SGn> <bootstrap>. SG labels are arbitrary, so
-each SG cluster is mapped -> S1/S2 by best 1:1 true-majority assignment (ORACLE on the labels
-only). Then each scaffold's label is applied to all its contigs (via the YaHS AGP):
-  (1) CONTIG accuracy (bp) vs per-contig truth
-  (2) emit contig labels -> feed the IDENTICAL Step-7 propagate_to_reads.py for the read number.
-
-Usage: score_subphaser_tetraploid.py <chrom-subgenome.tsv> <yahs.agp> [out_labels.tsv] [truth.tsv]
-"""
 import sys, re
 from collections import defaultdict
 from itertools import permutations

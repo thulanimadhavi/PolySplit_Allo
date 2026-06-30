@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Robustness check for Table S4: re-propagate an existing PolySplit run at several read-confidence
-# thresholds (beta) and re-score, holding everything upstream fixed. Cheap (no re-alignment): it
-# only re-runs propagate_to_reads + allread_eval. Shows read accuracy is stable across beta.
-#   bash sensitivity_sweep.sh <WORK_dir> <NSG> <chrom_subg.tsv> <total_reads>
 set -uo pipefail
 WORK=$1; NSG=$2; CHROM=$3; TOTAL=$4
 PIPE=$POLYSPLIT/pipeline; PY=python3

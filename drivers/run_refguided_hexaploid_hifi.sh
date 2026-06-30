@@ -1,16 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# Reference-guided baseline (precision ceiling), hexaploid Camelina (CmiT1, K=3) -- HiFi reads.
-# Apples-to-apples with PolySplit/polyCRACKER/SubPhaser, which all used the HiFi assembly for
-# the hexaploid (ONT collapses in Flye). The reference index + S1/S2/S3 signature sets are
-# READ-INDEPENDENT, so we REUSE the ones already built by run_refguided_hexaploid.sh and only
-# re-run: classify the HiFi reads -> evaluate vs the HiFi read truth (polysplit_run_hifi paf).
-#
-# RUN on nugget (heavy: ~9 GB of signature 33-mers loaded + 8.6 GB HiFi read scan):
-#   cd $POLYSPLIT
-#   nohup bash run_refguided_hexaploid_hifi.sh > refguided_hexaploid_hifi.log 2>&1 &
-# Idempotent. Requires run_refguided_hexaploid.sh to have produced the signatures already.
-# ============================================================================
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA

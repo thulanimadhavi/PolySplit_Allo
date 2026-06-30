@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""Turn polyCRACKER chunk clusters into a PER-CONTIG A/C label file in PolySplit's format
-(contig<TAB>label<TAB>truth), so it can be fed to the IDENTICAL Step-7 propagate_to_reads.py.
-
-Each contig is assigned the polyCRACKER cluster holding most of its chunk bp; the cluster is
-mapped to A/C by the same true-majority ORACLE used for the contig-level score
-(subgenome_0 -> A, subgenome_1 -> C). Contigs with no chunk get no label (omitted) -> reads on
-them stay unassigned (wrong in T3), exactly as for PolySplit's unlabelled contigs.
-
-Usage: make_polycracker_contig_labels.py [clusterResults_dir] [out.tsv]
-"""
 import sys, os, glob
 from collections import defaultdict
 

@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""K=3 generalization of classify_reads_by_kmers.py. Counts S1/S2/S3 signature-kmer hits per read
-and assigns the read to the subgenome with the most hits, iff that max >= min-hits AND beats the
-second-best by the ratio rule (max >= ratio*(second+1)); else 'ambiguous'. Same canonical k-mer
-encoding (Python big-int, so k=33 is fine) and same decision rule as the K=2 version.
-Usage: classify_reads_k3.py S1_sig S2_sig S3_sig reads k out [--min-hits 3 --ratio 3.0 --min-len 2000 --stride 1]"""
 import argparse
 import sys
 import gzip

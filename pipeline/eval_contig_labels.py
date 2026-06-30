@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""Build per-contig subgenome truth from a contigs->reference PAF + a chrom->subgenome map,
-then score reference-free contig labels by the best one-to-one (label->subgenome) assignment.
-Also writes the 6-column per-contig truth TSV (contig,length,Lbp,Rbp,minor_frac,class) reusable
-as TRUTH_PER_CONTIG.  Usage:
-  eval_contig_labels.py CHROM_SUBG.tsv contigs_to_ref.paf assembly.fasta.fai pred_labels.tsv truth_out.tsv"""
 import sys
 from collections import defaultdict, Counter
 from itertools import permutations

@@ -70,7 +70,7 @@ placed-chromosome size.
 | *B. napus* NAM0 | ONT | _[pending]_ | _[pending]_ | 1008 |
 | *B. napus* NAM0 | HiFi | _[pending]_ | _[pending]_ | 1008 |
 | *C. microcarpa* (4×) | ONT | 365 | _[pending]_ | 384 |
-| *C. microcarpa* (4×) | HiFi | _[pending]_ | _[pending]_ | 384 |
+| *C. microcarpa* (4×) | HiFi | 360 | _[pending]_ | 384 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[pending]_ | 608 |
 | *C. microcarpa* T1 (6×) | HiFi | 591 | _[pending]_ | 608 |
 
@@ -85,9 +85,9 @@ but are never false positives.
 | *B. napus* NAM0 | ONT | C | _[pending]_ | _[pending]_ | _[pending]_ |
 | *C. microcarpa* (4×) | ONT | S1 | _[ ]_ | _[ ]_ | 97.8 |
 | *C. microcarpa* (4×) | ONT | S2 | _[ ]_ | _[ ]_ | 97.8 |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S1 | 99.6 | 88.7 | _[ ]_ |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S2 | 85.6 | 96.5 | _[ ]_ |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S3 | 99.1 | 92.1 | _[ ]_ |
+| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S1 | 99.6 | 88.7 | 93.8 |
+| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S2 | 85.6 | 96.5 | 90.7 |
+| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S3 | 99.1 | 92.1 | 95.5 |
 
 ### Table S3. Subgenome-resolved assembly quality (HiFi)
 Each subgenome's reads were assembled independently (Flye) and scaffolded with Hi-C (YaHS).

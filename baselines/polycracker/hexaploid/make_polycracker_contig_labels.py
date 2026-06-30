@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""Turn polyCRACKER chunk clusters into a PER-CONTIG S1/S2/S3 label file in PolySplit's format
-(contig<TAB>label<TAB>truth) for the hexaploid (K=3), so it feeds the IDENTICAL Step-7
-propagate_to_reads.py. K-general version of the tetraploid script.
-
-Each contig is assigned the polyCRACKER cluster holding most of its chunk bp; each cluster is
-mapped to the subgenome it covers most (true-majority ORACLE, derived dynamically). Contigs with no
-chunk get no label (omitted) -> their reads stay unassigned (errors in T2), as for PolySplit.
-
-Usage: make_polycracker_contig_labels.py <clusterResults_dir> <out.tsv> [wg_purity.per_contig.tsv]
-"""
 import sys, os, glob
 from collections import defaultdict
 

@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-# Post-polyCRACKER evaluation for the hexaploid (K=3), run AFTER 00_setup_and_run.sh finishes.
-# Uses PolySplit's OWN eval (eval_contig_labels.py best-1:1 + allread_eval.py) so the polyCRACKER
-# number is directly comparable to PolySplit HiFi (contig 97.8% / read 96.2%).
-set -uo pipefail
 BASE=$DATA/camelina/Hexaploid_data/polycracker_baseline
 PY=python3
 PIPE=$POLYSPLIT/pipeline

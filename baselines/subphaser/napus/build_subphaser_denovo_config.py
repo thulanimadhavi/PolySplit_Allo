@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""Build a SubPhaser config (one homoeologous group per line, 2 columns for AC tetraploid)
-for the de-novo YaHS scaffolds. SubPhaser REQUIRES every row to have the same number of
-chromosomes (=ploidy); for nsg=2 we must emit 2-column rows. We have no reference, so we pair
-the chromosome-scale scaffolds greedily by self-alignment score (scaf_pairs.tsv) -- the honest
-de-novo approach. This pairing is necessarily degenerate because the giant scaffolds are
-chimeric A+C fusions that all align to each other.
-
-Out: denovo_pairs_sg.config  (7 rows x 2 scaffolds, for the 14 scaffolds >= MINLEN)
-Usage: build_subphaser_denovo_config.py
-"""
 import sys
 from collections import defaultdict
 

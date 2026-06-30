@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""K-GENERAL post-hoc repair. Homoeologous contigs must lie in DIFFERENT subgenomes (SA/LCP strong
-edges are ~entirely cross-subgenome). A contig whose strong homoeolog partners are mostly its OWN
-label is violating the anti-constraint -> reassign it to the subgenome its strong twins occupy
-LEAST, and iterate (resolves cascades). For K=2 this is exactly the old A<->C flip.
-
-PRINCIPLED: FIXED strong-twin floor (>=100k, the same cross-subgenome floor as pairing/seams) and a
-simple weighted majority -- NO threshold tuned on truth. Truth is printed for EVALUATION ONLY.
-Paths via env: POLYSPLIT_LABELS_IN / _CONTACTS / _TRUTH / _EDGES / _OUT.
-"""
 import sys, os, pickle
 from collections import defaultdict
 

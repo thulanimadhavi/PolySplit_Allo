@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""Filter homoeolog edges to each contig's strongest partner(s), removing spurious
-within-subgenome paralog/repeat edges that contaminate the subgenome-contrast labelling on
-highly contiguous assemblies (e.g. HiFi). A contig's true homoeolog is its dominant partner,
-far stronger than within-subgenome paralog edges, so we keep an edge (a,b,w) only when w is at
-least FRAC of the maximum partner weight at BOTH endpoints. This needs no truth and leaves
-fragmented (e.g. ONT) assemblies unchanged, where the spurious edges are already sub-threshold.
-
-Usage: filter_homoeolog_edges.py <in_edges.tsv> <out_edges.tsv> [frac=0.5]
-"""
 import sys
 from collections import defaultdict
 

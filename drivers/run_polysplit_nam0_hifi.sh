@@ -1,17 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on B. napus NAM0 (line N99), HiFi, K=2 (A/C).
-# Same pipeline as the ONT driver (run_polysplit_nam0.sh), swapped to HiFi:
-#   reads = PacBio HiFi, Flye --pacbio-hifi, minimap2 map-hifi.
-# --pacbio-hifi assumes ~0.1% error, well below the ~4% A/C divergence, so the
-# subgenomes are NOT collapsed (the collapse seen on ONT was a too-loose preset).
-#
-# RUN on nugget (Flye helper binaries do not exec on lode/trove):
-#   cd $POLYSPLIT
-#   nohup bash run_polysplit_nam0_hifi.sh \
-#     > $DATA/napus/polysplit_run_hifi/run.log 2>&1 &
-# Idempotent: every stage skips if its output exists, so re-run to resume.
-# ============================================================================
 set -uo pipefail
 
 # ---------------- config ----------------

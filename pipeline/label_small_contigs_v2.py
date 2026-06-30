@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-label_small_contigs_v2.py -- recover unblocked small contigs with TWO signals (K-GENERAL):
-  (1) Hi-C linkage: assign to the subgenome it contacts most, if that fraction >= HIC_FRAC.
-  (2) composition fallback for Hi-C-diffuse ones: assign to the nearest of the per-subgenome
-      repeat-15mer centroids learned from labelled contigs.
-Subgenome labels are arbitrary (A/C for K=2, S1..SK for K>2). Paths overridable by env vars
-POLYSPLIT_CONTACTS / POLYSPLIT_FASTA / POLYSPLIT_TRUTH / POLYSPLIT_OUT.
-Usage: label_small_contigs_v2.py <block_labels.tsv>
-"""
 import pickle, sys, os
 from collections import defaultdict
 import numpy as np

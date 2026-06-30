@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on B. napus NAM0 (line N99), ONT, K=2 (A/C).  Same pipeline as the
-# Camelina tetraploid run, with the validated fixes baked in.
-#
-# RUN (on nugget — these binaries do not exec on lode/trove):
-#   nohup bash run_polysplit_nam0.sh > $DATA/.../NAM0/polysplit_run/run.log 2>&1 &
-#
-# Idempotent: every stage skips if its output already exists, so you can re-run
-# after an interruption and it resumes. Heavy stages: Flye (~12-24h at ~100x),
-# bwa Hi-C (~few h), the two minimap2 read alignments (~1-3h each).
-# ============================================================================
 set -uo pipefail
 
 # ---------------- config (edit paths only if running off nugget) ----------------

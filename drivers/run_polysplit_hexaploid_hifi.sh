@@ -1,18 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on Camelina HEXAPLOID C. microcarpa CmiT1 (TMP24026), HiFi, K=3.
-# Uses the EXISTING HiFi Flye assembly (591 Mb, non-collapsed) -- NO re-assembly.
-# Same pipeline as the ONT hexaploid run; only the assembly (HiFi) and the read
-# preset (map-hifi) change. Writes to a separate dir so the ONT run is untouched.
-#   SG1=Chr01-06, SG2=Chr07-13, SG3=Chr14-20 (chrom_subg.hexaploid.tsv)
-#
-# RUN on nugget (binaries do not exec on lode/trove):
-#   cd $POLYSPLIT
-#   nohup bash run_polysplit_hexaploid_hifi.sh > hexaploid_hifi.log 2>&1 &
-#   tail -f hexaploid_hifi.log
-# Idempotent: each stage skips if its output exists. Long poles now = Hi-C bwa mem
-# (~50 GB Hi-C reads) and reads->ref/contigs (minimap2 map-hifi); no Flye.
-# ============================================================================
 set -uo pipefail
 
 NSG=3 ; THREADS=48 ; K_PAIR=33 ; BETA=0.60

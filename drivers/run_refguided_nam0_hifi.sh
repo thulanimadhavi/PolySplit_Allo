@@ -1,19 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# Reference-guided UPPER BOUND -- B. napus NAM0 (N99), K=2 (A/C) -- HiFi reads.
-# Companion to run_refguided_nam0.sh (ONT). The reference index + A/C signature sets are
-# READ-INDEPENDENT, so we REUSE the ones the ONT run built and only:
-#   (a) build a HiFi reads -> reference alignment for TRUTH (none exists yet for NAM0 HiFi),
-#   (b) classify the HiFi reads by signature hits,
-#   (c) evaluate vs the A/C chromosome truth.
-#
-# DEPENDENCY: run_refguided_nam0.sh must have finished (it builds A_sig_k33.txt / C_sig_k33.txt).
-#
-# RUN on nugget (heavy: minimap2 on 19.7 Gb HiFi reads + the signature read scan):
-#   cd $POLYSPLIT
-#   nohup bash run_refguided_nam0_hifi.sh > refguided_nam0_hifi.log 2>&1 &
-# Idempotent.
-# ============================================================================
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA

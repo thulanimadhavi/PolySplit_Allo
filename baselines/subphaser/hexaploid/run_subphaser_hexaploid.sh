@@ -1,19 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# scaffold-first (YaHS + SubPhaser) baseline -- Camelina HEXAPLOID CmiT1 (K=3).
-# Same recipe as the napus/tetraploid baselines, on the SAME HiFi assembly + Hi-C that PolySplit
-# used (the non-collapsed 591 Mb assembly; the ONT one is collapsed, so HiFi is the fair substrate).
-#   1 YaHS scaffold the HiFi contigs (reuses polysplit_run_hifi/hic.nsort.bam)
-#   2 self-align the chromosome-scale scaffolds -> scaf_pairs.tsv
-#   3 build the SubPhaser homoeolog-TRIPLE config (NSG=3)
-#   4 SubPhaser -just_core -nsg 3  -> per-scaffold subgenome calls
-#   5 score (scaffold SG -> best-1:1 S1/S2/S3 -> contigs) + 6 read-level via Step-7 propagate
-#
-# RUN on nugget (heavy: YaHS, minimap2, jellyfish):
-#   cd $DATA/camelina/Hexaploid_data/subphaser_baseline
-#   nohup bash run_subphaser_hexaploid.sh > run.log 2>&1 &
-# Idempotent: each stage skips if its output exists. MINLEN tunable (default 5 Mb).
-# ============================================================================
 set -uo pipefail
 HX=$DATA/camelina/Hexaploid_data
 WORK=$HX/subphaser_baseline

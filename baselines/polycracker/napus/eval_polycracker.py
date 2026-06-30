@@ -1,19 +1,4 @@
 #!/usr/bin/env python3
-"""
-eval_polycracker.py  --  turn polyCRACKER's chunk clustering into comparison-table accuracy.
-
-polyCRACKER writes per-subgenome 'extractedSubgenomes/*.fa' whose headers carry the chunk's
-scaffold + position (chunks are still labelled by scaffold of origin). We read those headers, get
-each chunk's predicted subgenome (= which fasta it came from) and its genome coordinates, then:
-
-  --mode AC          truth = scaffold name (A if contig has '.A', else C). Reports best-permutation
-                     accuracy = does polyCRACKER recover the A/C split?
-  --mode triplication truth = majority 3DH LF/MF1/MF2 label (geneblk_{A,C}.gene_loci.tsv) overlapping
-                     the chunk. Reports best-permutation accuracy vs the triplication.
-
-Header parsing assumes 'scaffold_start_end' (scaffold may contain dots, e.g. Bna.1SN29.A01); we
-rsplit on '_' twice. If polyCRACKER used a different header format, adjust parse_header().
-"""
 import argparse, glob, os, re, sys
 from collections import defaultdict, Counter
 from itertools import permutations
@@ -21,7 +6,6 @@ import bisect
 
 
 def parse_header(h):
-    """'>Bna.1SN29.A01_12345_62345' -> (contig, start, end). Returns None if it can't parse."""
     h = h[1:].split()[0]
     m = re.match(r"^(.*)_(\d+)_(\d+)$", h)
     if m:
@@ -34,7 +18,6 @@ def parse_header(h):
 
 
 def load_chunks(subg_fastas):
-    """Return list of (pred_cluster_idx, contig, start, end)."""
     chunks = []
     for ci, fa in enumerate(sorted(subg_fastas)):
         with open(fa) as f:
@@ -46,7 +29,6 @@ def load_chunks(subg_fastas):
 
 
 def load_geneblk(paths):
-    """3DH truth: contig -> sorted [(pos, subgenome 1/2/3)]."""
     t = defaultdict(list)
     for p in paths:
         with open(p) as f:
@@ -76,7 +58,6 @@ def chunk_truth_trip(contig, s, e, truth):
 
 
 def best_perm_accuracy(pairs, classes):
-    """pairs: list of (pred_cluster_idx, true_class). Map clusters->classes maximizing accuracy."""
     preds = sorted({p for p, _ in pairs})
     best = 0.0; bestmap = None
     # try all assignments of cluster->class (clusters may be <= len(classes))

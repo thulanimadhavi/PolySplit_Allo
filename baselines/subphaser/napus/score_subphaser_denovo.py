@@ -1,16 +1,4 @@
 #!/usr/bin/env python3
-"""Score SubPhaser's per-scaffold subgenome calls (run on de-novo YaHS scaffolds) against A/C truth.
-
-SubPhaser output (phase-results*/*.chrom-subgenome.tsv): <chrom> <SGn> <bootstrap>. SG labels are
-arbitrary, so (like polyCRACKER) we map each SG cluster -> A/C by its true-majority content (ORACLE
-on the labels only -- the clustering itself is SubPhaser's real output). Then:
-  (1) CONTIG accuracy: apply each scaffold's SG->A/C label to all its contigs (via AGP), score bp
-      against per-contig truth -> the real SubPhaser contig accuracy (compare to PolySplit 94.8%).
-  (2) emit subphaser_contig_labels.tsv (contig<TAB>label<TAB>truth) so the IDENTICAL Step-7
-      propagate_to_reads.py gives a matched READ-level number (compare to PolySplit 91.6%).
-
-Usage: score_subphaser_denovo.py <chrom-subgenome.tsv>  [out_contig_labels.tsv]
-"""
 import sys, re
 from collections import defaultdict
 
@@ -37,7 +25,6 @@ for ln in open(AGP):
     scaf_contigs[p[0]].append((p[5], int(p[2]) - int(p[1]) + 1))
 
 def norm(chrom):
-    """recover scaffold_N from SubPhaser id (may carry label prefix / sep)."""
     m = re.search(r"scaffold_\d+", chrom)
     return m.group(0) if m else chrom
 

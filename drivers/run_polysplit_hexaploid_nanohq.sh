@@ -1,20 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on Camelina HEXAPLOID CmiT1 (TMP24026), ONT, K=3 -- but with the
-# CORRECT Flye preset for R10.4.1 reads: --nano-hq (not --nano-raw).
-#
-# The original ONT run used --nano-raw (assumes ~10% error), which collapsed the
-# 5%-divergent S1/S2 subgenomes (241 Mb of 608 Mb). R10.4.1 reads are ~1% error,
-# well below 5%, so --nano-hq should keep S1/S2 separate and un-collapse the
-# assembly -- the same reason HiFi (--pacbio-hifi, ~0.1%) worked. Fresh assembly
-# into polysplit_run_nanohq/ so the --nano-raw run is preserved for comparison.
-#
-# RUN on nugget (binaries SIGBUS on lode/trove). Long pole = Flye assembly (~1 day);
-# --resume works within this run but NOT across a preset change, so this is a fresh build.
-#   cd $POLYSPLIT
-#   nohup bash run_polysplit_hexaploid_nanohq.sh > hexaploid_nanohq.log 2>&1 &
-#   tail -f hexaploid_nanohq.log
-# ============================================================================
 set -uo pipefail
 
 NSG=3 ; THREADS=48 ; K_PAIR=33 ; BETA=0.60

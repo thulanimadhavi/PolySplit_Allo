@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""K=3 generalization of Select_signatures.py: select subgenome-SPECIFIC k=33 signatures for
-S1/S2/S3 from a gsufsort GSA+LCP of the reference chromosomes. A k-mer block (suffixes sharing a
-k-prefix, delimited by lcp < K) is a signature for subgenome g iff ALL its copies fall in g's
-chromosomes (the other two subgenomes have zero copies) and the total copy count <= max_copy.
-Emits .S1.bed/.S2.bed/.S3.bed of one representative position per signature k-mer.
-Same logic and thresholds as the K=2 version; only the subgenome count is generalized to 3."""
 import argparse
 import numpy as np
 import random

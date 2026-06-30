@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Read-level eval: polyCRACKER per-contig labels -> PolySplit's IDENTICAL Step-7 vote
-# (propagate_to_reads.py --weight ident --min-conf 0.6) -> allread_eval.py vs the SAME truth.
 set -uo pipefail
 BASE=$DATA/camelina/Tetraploid_data/polycracker_baseline
 PIPE=$POLYSPLIT/pipeline

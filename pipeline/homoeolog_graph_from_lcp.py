@@ -1,14 +1,4 @@
 #!/usr/bin/env python3
-"""
-homoeolog_graph_from_lcp.py  --  contig-contig HOMOEOLOG/paralog graph from the contigs' SA/LCP.
-
-A maximal LCP run >= K is one shared k-mer; the `doc`s of its suffixes are the contigs sharing it.
-k-mers shared by a SMALL number of contigs (copy in [min-copy, max-copy]) link homoeologous /
-paralogous loci specifically (an A contig and its C homoeolog, or triplication paralogs), whereas
-ultra-high-copy k-mers are genome-wide repeats that connect everything and are skipped. Output:
-contig pairs with a shared-k-mer count = the sequence-similarity (homoeolog) edges to PRUNE from the
-Hi-C graph (reference-free ALLHiC-style). This is the SA/LCP sparse-MEM step.
-"""
 import argparse, sys
 from collections import Counter
 import numpy as np

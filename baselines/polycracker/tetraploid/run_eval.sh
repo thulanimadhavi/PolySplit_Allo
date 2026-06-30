@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Post-polyCRACKER evaluation orchestrator (run AFTER 00_setup_and_run.sh finishes).
-# Contig-level oracle accuracy + per-contig labels + read-level accuracy.
 set -uo pipefail
 BASE=$DATA/camelina/Tetraploid_data/polycracker_baseline
 PY=python3
