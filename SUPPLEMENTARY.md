@@ -1,4 +1,4 @@
-# PolySplit-Allo — Supplementary Materials
+# PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
 table numbering follows the manuscript order (Figures S1–S4, Tables S1–S4). Figures live in
