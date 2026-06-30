@@ -83,8 +83,8 @@ but are never false positives.
 |---|---|---|---|---|---|
 | *B. napus* NAM0 | ONT | A | _[]_ | _[]_ | _[]_ |
 | *B. napus* NAM0 | ONT | C | _[]_ | _[]_ | _[]_ |
-| *C. microcarpa* (4×) | ONT | S1 | _[ ]_ | _[ ]_ | 97.8 |
-| *C. microcarpa* (4×) | ONT | S2 | _[ ]_ | _[ ]_ | 97.8 |
+| *C. microcarpa* (4×) | ONT | S1 | 98.9 | 96.8 | 97.8 |
+| *C. microcarpa* (4×) | ONT | S2 | 98.0 | 97.6 | 97.8 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S1 | 99.6 | 88.7 | 93.8 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S2 | 85.6 | 96.5 | 90.7 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S3 | 99.1 | 92.1 | 95.5 |
