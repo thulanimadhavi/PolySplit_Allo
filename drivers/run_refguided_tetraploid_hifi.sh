@@ -1,15 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# Reference-guided UPPER BOUND -- Camelina tetraploid (CN119243, K=2 S1/S2) -- HiFi reads.
-# Companion to the ONT reference-guided run: the reference index + S1/S2 signature sets are
-# READ-INDEPENDENT, so we REUSE the ones built by run_refguided_tetraploid_v2.sh and only
-# re-classify the HiFi reads + evaluate vs the HiFi read truth (polysplit_run_hifi paf).
-#
-# RUN on nugget:
-#   cd $POLYSPLIT
-#   nohup bash run_refguided_tetraploid_hifi.sh > refguided_tetraploid_hifi.log 2>&1 &
-# Idempotent. Requires the ONT tetraploid reference-guided signatures to exist.
-# ============================================================================
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA

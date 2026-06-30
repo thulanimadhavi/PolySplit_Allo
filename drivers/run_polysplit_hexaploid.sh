@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on Camelina HEXAPLOID C. microcarpa CmiT1 (TMP24026), ONT, K=3.
-# First real test of the K>2 path. Same pipeline as the tetraploid/NAM0 runs with
-# the validated fixes baked in; only NSG=3 + hexaploid paths change.
-#   SG1=Chr01-06, SG2=Chr07-13, SG3=Chr14-20 (chrom_subg.hexaploid.tsv)
-#
-# RUN on nugget (binaries do not exec on lode/trove):
-#   nohup bash run_polysplit_hexaploid.sh > $DATA/.../Hexaploid_data/polysplit_run/run.log 2>&1 &
-# Idempotent: each stage skips if its output exists. Flye on ~600 Mb @ ~58x is the long pole.
-# ============================================================================
 set -uo pipefail
 
 NSG=3 ; THREADS=48 ; K_PAIR=33 ; BETA=0.60

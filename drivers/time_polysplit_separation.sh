@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# Time the PolySplit SEPARATION stages on existing inputs -- excludes Flye (shared assembly) and the
-# Hi-C / read alignment (shared prerequisites, reused by the baselines). Times the PolySplit-specific
-# compute: (1) homoeolog edges (gsufsort GSA+LCP + LCP walk), (2) blocks/de-chimerize/label/repair,
-# (3) propagate to reads. Re-runs to a temp dir so existing results are untouched.
-#   bash time_polysplit_separation.sh <WORK_dir> <assembly.fasta> <NSG> [reads_to_contigs.paf]
 set -uo pipefail
 WORK=$1; ASM=$2; NSG=${3:-2}; R2C=${4:-$WORK/reads_to_contigs.paf}
 PIPE=$POLYSPLIT/pipeline

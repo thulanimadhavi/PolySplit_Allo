@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-# =============================================================================
-# run_subphaser_denovo.sh -- actually RUN SubPhaser on the de-novo YaHS scaffolds
-# (the scaffold-first baseline) to get a REAL per-scaffold subgenome accuracy --
-# not the oracle. Run on nugget (heavy: jellyfish k-mer counting on ~900 Mb).
-#
-#   subphaser -i scaffolds.fa -c <2-col homoeolog-pair config> -nsg 2 -just_core
-#   -just_core  -> exit after the core phasing module (skips slow LTR/blocks/circos)
-# Output: phase-results_denovo/*.chrom-subgenome.tsv  (scaffold -> SGn)
-# Then score with ../score_subphaser_denovo.py + Step-7 propagate (see bottom).
-# =============================================================================
 set -euo pipefail
 SP=$SUBPHASER
 CONDA=$CONDA_PREFIX/etc/profile.d/conda.sh

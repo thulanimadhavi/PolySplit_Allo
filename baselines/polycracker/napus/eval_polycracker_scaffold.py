@@ -1,18 +1,4 @@
 #!/usr/bin/env python3
-"""Evaluate polyCRACKER clusters when run on the YaHS SCAFFOLDS (not contigs).
-
-Chunks are named by scaffold coords (scaffold_<n>_<start>_<end>); truth is per-contig
-(wg_purity.per_contig.tsv). We map each scaffold chunk -> the contig that occupies that
-scaffold position via the YaHS AGP (W rows: scaffold[s,e] -> contig), take the contig with
-the most overlap, and inherit its A/C truth. Then score with the same true-majority ORACLE
-as the contig run, and report coverage.
-
-This run removes the contig-fragmentation coverage confound: on chromosome-scale scaffolds
-polyCRACKER can chunk ~the whole genome, so if it still can't split A/C the failure is the
-method, not the input.
-
-Usage: eval_polycracker_scaffold.py [clusterResults_dir]
-"""
 import sys, os, glob, bisect
 from collections import defaultdict
 
@@ -45,7 +31,6 @@ for s in scaf_iv:
 scaf_starts = {s: [iv[0] for iv in ivs] for s, ivs in scaf_iv.items()}
 
 def chunk_to_contig(chunk):
-    """scaffold_1_667000_767000 -> (best_contig, bp) by max overlap via AGP."""
     scaf, start, end = chunk.rsplit("_", 2)
     cs, ce = int(start), int(end)          # 0-based-ish; 1bp offset vs AGP is negligible
     bp = ce - cs

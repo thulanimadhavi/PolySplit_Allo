@@ -1,5 +1,3 @@
-
-#!/usr/bin/env python3
 import sys
 
 COMP = str.maketrans("ACGTacgt", "TGCAtgca")

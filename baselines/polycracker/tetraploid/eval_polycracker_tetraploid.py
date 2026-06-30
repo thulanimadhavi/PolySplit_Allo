@@ -1,21 +1,4 @@
 #!/usr/bin/env python3
-"""Evaluate polyCRACKER subgenome clusters on the tetraploid C. microcarpa DE-NOVO Flye
-assembly against S1/S2 truth. Adapted from the napus eval_polycracker_denovo.py.
-
-polyCRACKER bins 100 kb genome CHUNKS into n unlabeled clusters by repeat-k-mer composition.
-Contigs are named contig_<id> (no subgenome in the name), so truth comes from
-wg_purity.per_contig.tsv (pure_S1 / pure_S2 / chimeric). Each cluster is labelled by its
-true-majority subgenome (ORACLE -- the best a 2-cluster method could do), exactly as for napus.
-
-Reports:
-  (1) oracle accuracy on the CLUSTERED chunks
-  (2) genome COVERAGE = clustered bp / total assembly bp
-  (3) contig-level oracle over the WHOLE assembly (unchunked contigs = unassigned, wrong)
-      -- the all-contig figure comparable to PolySplit's contig accuracy (97.2 here).
-
-Chunk id format: contig_<id>_<start>_<end>.
-Usage: eval_polycracker_tetraploid.py [clusterResults_dir]
-"""
 import sys, os, glob
 from collections import defaultdict
 

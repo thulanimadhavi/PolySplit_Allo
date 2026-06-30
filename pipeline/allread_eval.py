@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""K-general all-read subgenome accounting at three denominators:
-  T1 among called+truth ; T2 all labelled+truth (ambiguous = error) ; T3 all reads.
-Read truth = subgenome of the read's best reference alignment. Predicted labels (S1..SK) and truth
-labels (A/C/...) may differ in name, so predictions are mapped to truth by the best one-to-one
-assignment. Also prints the K x K confusion matrix."""
 import argparse, sys
 from collections import defaultdict, Counter
 from itertools import permutations

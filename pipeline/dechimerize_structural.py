@@ -1,25 +1,4 @@
 #!/usr/bin/env python3
-"""
-dechimerize_structural.py -- PRINCIPLED de-chimerization (no tuned edge-count, no truth-peeking).
-
-A chimeric block = a Hi-C block that fused a chromosome with its own homoeolog (the A copy + the
-C copy stuck together). Detect it STRUCTURALLY instead of by a hand-tuned count of intra-block edges:
-
-  For each block:
-    1. split its Hi-C sub-graph (Louvain) into communities;
-    2. keep the LARGE halves (>= MIN_SUB = 1 Mb -- a biological size floor, not tuned on truth);
-    3. the block is CHIMERIC iff two large halves are linked to EACH OTHER by a STRONG homoeolog
-       edge (>= PAIR_MIN = 100k -- the SAME strong-edge floor already used for block pairing).
-       That edge means half-1 is the A copy and half-2 is its C homoeolog -> a real A+C fusion.
-    4. split into those halves; attach small leftovers to their most Hi-C-connected half; ITERATE.
-
-Why paralogs/haplotigs do NOT trip it:
-  * a within-chromosome duplication stays inside ONE Hi-C community -> never "two large halves";
-  * the two ARMS of a pure chromosome are the SAME subgenome -> no homoeolog edge BETWEEN them.
-So the only thing producing "two large Hi-C halves + a strong homoeolog seam" is a genuine fusion.
-The two thresholds (1 Mb size, 100k strong edge) are pre-existing and biology/pairing-justified --
-NOT tuned on the answer. Truth is used ONLY to score the final result, never to choose a cutoff.
-"""
 import sys, pickle, os
 from collections import defaultdict
 import networkx as nx
@@ -36,12 +15,6 @@ EDGES = os.environ.get("POLYSPLIT_EDGES", "homoeolog_edges.tsv")
 
 
 def structural_dechimerize(blocks, G, strong_edges, lengths, verbose=True):
-    """strong_edges: list of (a,b,w) homoeolog edges with w >= PAIR_MIN.
-    MULTI-WAY split: a chimeric block is broken into ALL of its large Hi-C communities (>= MIN_SUB),
-    with small leftovers attached to their most Hi-C-linked piece. We do NOT force a 2-way A/C cut:
-    Hi-C trans-contacts don't cleanly separate the A arm from the C arm, so a forced bisection lumps
-    mixed material and LOWERS purity (92.8% vs 96.8% in testing). De-chimerize only needs to shatter
-    the block into PURE pieces; Step 4 (repeat-contrast) then labels each piece A or C."""
     nsplit = 0
     for it in range(MAX_ITERS):
         changed = False

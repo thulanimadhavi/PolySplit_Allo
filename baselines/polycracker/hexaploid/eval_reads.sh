@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Read-level eval (K=3): polyCRACKER per-contig labels -> PolySplit's IDENTICAL Step-7 vote
-# (propagate_to_reads.py --weight ident --min-conf 0.6) -> allread_eval.py vs the SAME truth.
-# Uses the HiFi run's read alignments, so it is directly comparable to PolySplit HiFi (read 96.2%).
 set -uo pipefail
 BASE=$DATA/camelina/Hexaploid_data/polycracker_baseline
 PIPE=$POLYSPLIT/pipeline

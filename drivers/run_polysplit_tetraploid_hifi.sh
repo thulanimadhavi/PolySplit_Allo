@@ -1,18 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# PolySplit on Camelina tetraploid CN119243 -- HiFi branch, K=2 (S1/S2).
-# Identical pipeline to the ONT run; ONLY two presets change:
-#     Flye   --nano-raw   ->  --pacbio-hifi
-#     minimap2 -x map-ont ->  -x map-hifi
-# Same reference + same CHROM_SUBG truth as the ONT run, separate WORK dir so
-# the HiFi result sits beside the ONT one (read-agnostic comparison).
-#
-# RUN (on nugget; binaries do not exec on lode/trove):
-#   nohup bash run_polysplit_tetraploid_hifi.sh \
-#     > $DATA/.../Tetraploid_data/polysplit_run_hifi/run.log 2>&1 &
-#
-# Idempotent: each stage skips if its output exists, so re-running resumes.
-# ============================================================================
 set -uo pipefail
 
 # ---------------- read-type switch (the whole "HiFi branch") ----------------

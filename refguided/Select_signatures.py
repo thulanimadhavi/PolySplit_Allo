@@ -20,7 +20,6 @@ def read_fai_lengths(fai_path):
     return lens
 
 def reservoir_add(res, seen_count, item, target, rng):
-    """Classic reservoir sampling: uniform sample over a stream."""
     seen_count += 1
     if len(res) < target:
         res.append(item)

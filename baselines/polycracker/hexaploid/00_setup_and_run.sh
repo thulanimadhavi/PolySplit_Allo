@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# polyCRACKER baseline, Camelina HEXAPLOID CmiT1 (K=3). Stages the IDENTICAL HiFi
-# assembly PolySplit used (the non-collapsed 591 Mb one; the ONT assembly is
-# collapsed, so HiFi is the fair substrate for both methods) and runs the REAL
-# polyCRACKER tool via the same tested napus driver, with n_subgenomes=3.
-#
-# RUN on a DOCKER/udocker-capable server (the napus/tetraploid baselines used udocker).
-#   nohup bash 00_setup_and_run.sh > 00_polycracker.log 2>&1 &
-# polyCRACKER on ~591 Mb is heavy (kmer/blast/spectral); expect ~1 h+ (napus 921 Mb ~41 min).
-# ============================================================================
 set -euo pipefail
 BASE=$DATA/camelina/Hexaploid_data/polycracker_baseline
 DRIVER=$DATA/polycracker_compare/run_polycracker_napus.sh

@@ -1,23 +1,4 @@
 #!/usr/bin/env bash
-# =============================================================================
-# run_polycracker_napus.sh  --  run polyCRACKER on NAM29 for the comparison table.
-#
-# polyCRACKER is Python-2.7 + Nextflow; the reliable way to run it is the official
-# Docker image (sgordon/polycracker-miniconda:1.0.3). Run this on a server with Docker.
-#
-# It bins genome CHUNKS into subgenomes by repeat-k-mer composition (unsupervised).
-# We run three jobs to fill the table:
-#   (1) A/C        : genome = NAM29_AC.fa,  n_subgenomes = 2   -> evaluate vs scaffold A/C
-#   (2) triplication A : genome = NAM29_A.fa, n_subgenomes = 3 -> evaluate vs 3DH LF/MF1/MF2
-#   (3) triplication C : genome = NAM29_C.fa, n_subgenomes = 3 -> evaluate vs 3DH LF/MF1/MF2
-#
-# Usage:
-#   # put the genome fastas in $WORK (or symlink), then:
-#   ./run_polycracker_napus.sh NAM29_AC.fa 2 100000
-#   ./run_polycracker_napus.sh NAM29_A.fa  3 100000
-#   ./run_polycracker_napus.sh NAM29_C.fa  3 100000
-# Output: $WORK/analysisOutputs_<genome>_n<N>/   (cluster results + extracted subgenome fastas)
-# =============================================================================
 set -euo pipefail
 
 GENOME=${1:?usage: run_polycracker_napus.sh <genome.fa> <n_subgenomes> [chunk_bp]}

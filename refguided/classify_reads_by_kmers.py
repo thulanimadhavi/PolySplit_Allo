@@ -7,7 +7,6 @@ def open_text(path):
     return gzip.open(path, "rt") if path.endswith(".gz") else open(path, "rt")
 
 def iter_reads_auto(path):
-    """Yield (read_id, seq_string) from FASTA or FASTQ (gz ok). FASTA supports multiline sequences."""
     with open_text(path) as f:
         first = f.readline()
         if not first:
@@ -48,14 +47,12 @@ def iter_reads_auto(path):
             raise ValueError("Unknown format: expected FASTA '>' or FASTQ '@' as first character.")
 
 def build_base_table():
-    """Map ASCII code -> 0..3 for A,C,G,T (case-insensitive), else -1."""
     tbl = [-1] * 256
     for ch, v in [(b"A",0),(b"C",1),(b"G",2),(b"T",3),(b"a",0),(b"c",1),(b"g",2),(b"t",3)]:
         tbl[ch[0]] = v
     return tbl
 
 def kmer_canon_code(seq, k, tbl):
-    """Return canonical 2-bit code for seq (length==k), or None if non-ACGT present."""
     if len(seq) != k:
         return None
     bseq = seq.encode("ascii", "ignore")
@@ -72,7 +69,6 @@ def kmer_canon_code(seq, k, tbl):
     return fwd if fwd < rev else rev
 
 def load_signature_codes(path, k, tbl):
-    """Load kmers from txt or fasta into a set of canonical int codes."""
     S = set()
     with open_text(path) as f:
         for line in f:

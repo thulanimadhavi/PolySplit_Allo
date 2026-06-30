@@ -1,15 +1,4 @@
 #!/usr/bin/env python3
-"""
-decloud_blocks_v2.py -- more sensitive, iterated de-chimerization.
-
-v1 flagged a block chimeric if it held ONE very strong (>=100k) SA/LCP homoeolog edge. v2 instead uses
-the COUNT of intra-block homoeolog edges above a moderate weight: a truly fused A+C chromosome pair has
-MANY homoeolog edges crossing its internal boundary (whole A chrom <-> whole C chrom = many homoeologous
-loci), whereas a within-subgenome paralog/haplotig pair has only 1-2 -- so counting catches chimeras
-that lack a single huge edge without falsely splitting pure blocks. It then SPLITS chimeric blocks by
-Hi-C sub-clustering and ITERATES (re-detect + re-split) until no chimeric block remains, then labels by
-repeat-contrast. Sweeps (edge_min, min_edges) and reports contig/block accuracy for each.
-"""
 import sys, pickle
 from collections import defaultdict, Counter
 import numpy as np
@@ -68,7 +57,6 @@ def enforce_pairs(score, pairs, nb, iters=500):
 
 
 def dechimerize(blocks, G, hedges, lengths, edge_min, min_edges):
-    """Iterate: split blocks with >=min_edges intra-block homoeolog edges (>=edge_min) by Hi-C."""
     nsplit = 0
     for _ in range(MAX_ITERS):
         blk_of = {c: i for i, com in enumerate(blocks) for c in com}

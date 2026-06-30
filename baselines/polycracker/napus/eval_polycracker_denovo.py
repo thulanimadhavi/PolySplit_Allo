@@ -1,21 +1,4 @@
 #!/usr/bin/env python3
-"""Evaluate polyCRACKER subgenome clusters on the DE-NOVO Flye assembly against A/C truth.
-
-polyCRACKER bins 100 kb genome CHUNKS into n unlabeled clusters by repeat-k-mer composition.
-On a de-novo assembly the contigs are named contig_<id> (no subgenome in the name), so truth
-comes from wg_purity.per_contig.tsv (pure_A / pure_C / chimeric). We score polyCRACKER with the
-same ORACLE used for the other unlabeled-group baselines (scaffold-first / ALLHiC): each cluster
-is labelled by its true-majority subgenome (the best a 2-cluster method could do).
-
-Reports:
-  (1) oracle accuracy on the CLUSTERED chunks (how well it splits what it bins)
-  (2) genome COVERAGE = clustered bp / total assembly bp (how much it can even label)
-  (3) contig-level oracle over the WHOLE assembly (contigs with no chunk = unassigned, wrong)
-      -- the conservative, all-contig figure comparable to PolySplit's contig accuracy.
-
-Chunk id format: contig_<id>_<start>_<end>  (all chunks 100 kb).
-Usage: eval_polycracker_denovo.py [clusterResults_dir]
-"""
 import sys, os, glob
 from collections import defaultdict
 

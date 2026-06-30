@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Reference-guided UPPER BOUND, Camelina tetraploid -- exact napus method, on the
-# gsufsort-64 index (correct local `pos`). Select_signatures -> sig seqs -> clean
-# -> classify reads -> evaluate vs S1/S2 truth.
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA          # napus ref-guided scripts

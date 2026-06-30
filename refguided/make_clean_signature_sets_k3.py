@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""K=3 generalization of make_clean_signature_sets.py. Reads three raw signature FASTAs (S1/S2/S3),
-canonicalizes, and removes any k-mer that appears in MORE THAN ONE subgenome set (non-discriminative
-after canonicalization / revcomp collisions). Keeps only k-mers unique to exactly one subgenome.
-Usage: make_clean_signature_sets_k3.py S1_raw.fa S2_raw.fa S3_raw.fa S1_clean.txt S2_clean.txt S3_clean.txt"""
 import sys
 from collections import Counter
 

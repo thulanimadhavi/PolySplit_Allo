@@ -1,19 +1,4 @@
 #!/usr/bin/env bash
-# ============================================================================
-# Reference-guided UPPER BOUND -- B. napus NAM0 (N99), K=2 (A/C).
-# Exact napus reference-guided method (same as tetraploid/hexaploid baselines):
-#   0  subgenome fastas (A/C) + .fai + gsufsort GSA(4,8)+LCP(1) of the N99 reference
-#   1  Select_signatures  -> A/C signature 33-mer BEDs (max-copy 3)
-#   2  seqkit subseq       -> raw signature k-mer sequences
-#   3  make_clean_signature_sets -> deduped A/C 33-mer signature sets
-#   4  classify_reads_by_kmers   -> per-read A/C call from the N99 ONT reads
-#   5  allread_eval        -> accuracy vs the A/C chromosome truth (reads_to_ref.paf)
-#
-# RUN on nugget (heavy: gsufsort on ~1 Gb ref, classify on 96 Gb ONT reads):
-#   cd $POLYSPLIT
-#   nohup bash run_refguided_nam0.sh > refguided_nam0.log 2>&1 &
-# Idempotent: each stage skips if its output already exists.
-# ============================================================================
 set -uo pipefail
 HERE=$POLYSPLIT
 A=$DATA          # napus ref-guided scripts live here

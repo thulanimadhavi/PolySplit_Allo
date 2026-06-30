@@ -1,13 +1,4 @@
 #!/usr/bin/env python3
-"""
-propagate_to_reads.py -- turn de-novo contig subgenome labels into the final PER-READ assignment.
-
-K-GENERAL: contig labels may be any set of subgenome names (S1..SK, or A/C). Each read votes for the
-subgenome of the contig(s) it maps to (minimap2 PAF), weighted by matched bases x identity, so a read
-is called by where most of it aligns; reads below --min-conf are 'ambiguous'.
-
-  minimap2 -x map-ont -t 32 assembly.fasta READS.fastq > reads_to_contigs.paf
-"""
 import argparse, sys
 from collections import defaultdict, Counter
 
