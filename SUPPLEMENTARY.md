@@ -9,7 +9,7 @@ table numbering follows the manuscript order (Figures S1–S4, Tables S1–S4). 
 ### Figure S1. The full PolySplit pipeline
 <p align="center"><img src="figures/Denovo_assembly_polysplit.png" alt="Full PolySplit pipeline schematic" width="100%"></p>
 
-*Caption.* Step-by-step schematic expanding the four stages summarized in main-text Fig. 2.
+Step-by-step schematic expanding the four stages summarized in main-text Fig. 2.
 **(A)** Mixed long reads are assembled with Flye and the contigs are clustered into Hi-C blocks by
 length-normalized contact density and Louvain community detection. **(B)** A generalized suffix
 array and LCP array over the contigs yield shared canonical 33-mer counts; strong edges
@@ -24,7 +24,7 @@ subgenome is then assembled and Hi-C-scaffolded independently, so homoeologs are
 ### Figure S2. Exact k-mer survival on raw reads, per dataset
 <p align="center"><img src="figures/FigS2_kmer_survival.png" alt="Per-dataset exact k-mer survival vs k for ONT and HiFi" width="100%"></p>
 
-*Caption.* Fraction of a read's $k$-mers that are error-free (per-base identity raised to the
+Fraction of a read's $k$-mers that are error-free (per-base identity raised to the
 $k$-th power) versus $k$, shown separately for each dataset's ONT and HiFi reads. Per-base identity
 is measured from each read set's alignment to its reference (minimap2 `de` tag). At $k=33$, the
 homoeolog-pairing length, exact $k$-mers survive on HiFi (88–91%) but largely collapse on ONT
@@ -36,7 +36,7 @@ lack, so the method is robust to read chemistry. $^{*}$The NAM0 HiFi value is th
 ### Figure S3. Homoeolog shared-33-mer edge-weight distributions, per dataset and chemistry
 <p align="center"><img src="figures/FigS3_edge_weights.png" alt="Per-dataset shared-33-mer edge-weight distributions" width="100%"></p>
 
-*Caption.* Distribution of the number of shared canonical 33-mers between contig pairs,
+Distribution of the number of shared canonical 33-mers between contig pairs,
 $w_{\mathrm{kmer}}(a,b)$, for each dataset (rows) and read chemistry (columns). In every panel the
 genuine homoeologs share long sequence tracts and occupy the extreme upper tail, well separated
 from the background of incidental matches; the strong-edge cutoff $\tau_H$ (dashed line) retains the
@@ -47,7 +47,7 @@ The *B. napus* (NAM0) panels are left blank pending its assembly runs.
 ### Figure S4. Read-level confusion matrices across methods and species
 <p align="center"><img src="figures/FigS4_confusion_all.png" alt="Read-level confusion matrices, three species by four methods" width="100%"></p>
 
-*Caption.* Rows are the three allopolyploids; columns are the four methods, with PolySplit shown at
+Rows are the three allopolyploids; columns are the four methods, with PolySplit shown at
 its best chemistry (HiFi here). Within each panel, rows are the true subgenome and columns the
 predicted label (subgenomes, ambiguous, unassigned); each cell gives the number of reads (the cell
 colour is the row fraction, so the diagonal stands out), and the panel header gives the read
