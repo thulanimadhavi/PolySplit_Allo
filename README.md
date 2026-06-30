@@ -4,6 +4,8 @@ Reference-free subgenome separation of allopolyploid long reads by assembly-firs
 homoeolog phasing. This repository accompanies the submitted manuscript and is provided
 for review.
 
+<p align="center"><img src="figures/Denovo_assembly_polysplit_V2.png" alt="Full PolySplit pipeline schematic" width="100%"></p>
+
 ## Layout
 - `pipeline/`  core PolySplit stages
   - `homoeolog_graph_from_lcp.py`  shared-33mer homoeolog edges from a gsufsort GSA+LCP

@@ -71,7 +71,7 @@ placed-chromosome size.
 | *B. napus* NAM0 | HiFi | _[pending]_ | _[pending]_ | 1008 |
 | *C. microcarpa* (4×) | ONT | 365 | _[pending]_ | 384 |
 | *C. microcarpa* (4×) | HiFi | _[pending]_ | _[pending]_ | 384 |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | ~592 | _[pending]_ | 608 |
+| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[pending]_ | 608 |
 | *C. microcarpa* T1 (6×) | HiFi | 591 | _[pending]_ | 608 |
 
 ### Table S2. Per-subgenome precision, recall, and F1
@@ -89,15 +89,23 @@ but are never false positives.
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S2 | 85.6 | 96.5 | _[ ]_ |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S3 | 99.1 | 92.1 | _[ ]_ |
 
-### Table S3. Subgenome-resolved assembly quality
-Separated assemblies versus the reference: total size, contig count, N50, BUSCO completeness and
-duplication, read back-mapping rate, and reference-aligned subgenome purity (the fraction of each
-assembly that maps to its intended subgenome rather than its homoeolog). _[pending: assemblies in
-progress]_
+### Table S3. Subgenome-resolved assembly quality (HiFi)
+Each subgenome's reads were assembled independently (Flye) and scaffolded with Hi-C (YaHS).
+Size is compared to the expected subgenome size; purity is the fraction of assembly length whose
+best alignment is to the intended subgenome rather than its homoeolog. A clean separation shows
+high purity and low BUSCO duplication (homoeologous copies removed); for contrast, the fused
+scaffold-first assembly is chimeric (low purity, high duplication).
 
-| Assembly | size (Mb) | N50 | BUSCO C/D | back-map | purity |
-|---|---|---|---|---|---|
-| _[pending]_ | | | | | |
+| Assembly | Size Mb (% exp.) | Contigs | N50 | BUSCO C% (D%) | Back-map % | Purity % |
+|---|---|---|---|---|---|---|
+| *B. napus* A (exp. 419) | _[pending]_ | | | | | |
+| *B. napus* C (exp. 559) | _[pending]_ | | | | | |
+| *C. microcarpa* 4× SG1 (exp. 188) | _[pending]_ | | | | | |
+| *C. microcarpa* 4× SG2 (exp. 172) | _[pending]_ | | | | | |
+| *C. microcarpa* 6× SG1 (exp. 188) | _[pending]_ | | | | | |
+| *C. microcarpa* 6× SG2 (exp. 172) | _[pending]_ | | | | | |
+| *C. microcarpa* 6× SG3 (exp. 227) | _[pending]_ | | | | | |
+
 
 ### Table S4. Parameter sensitivity
 Read accuracy under variation of each fixed threshold around its default, holding the others fixed;
