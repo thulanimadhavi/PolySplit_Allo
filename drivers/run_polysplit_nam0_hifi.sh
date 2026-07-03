@@ -16,7 +16,7 @@ WORK=$DATA/polysplit_run_hifi ; mkdir -p "$WORK"
 ASM=$WORK/flye_out/assembly.fasta
 
 # tools (nugget-validated)
-FLYE_BIN=/path/to/flye/bin
+FLYE_BIN=${FLYE_BIN:-/path/to/flye/bin}
 BWA=bwa
 SEQKIT=seqkit
 SAMTOOLS=samtools

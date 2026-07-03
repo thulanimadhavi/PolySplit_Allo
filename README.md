@@ -15,24 +15,31 @@ for review.
   - `propagate_to_reads.py`        identity-weighted contig-label -> read propagation
   - `allread_eval.py`, `eval_contig_labels.py`  read- and contig-level evaluation
 - `refguided/`  reference-guided signature baseline (K=2 and K=3)
-- `drivers/`    end-to-end driver scripts, one per dataset (PolySplit, reference-guided, timing)
+- `drivers/`    `run_polysplit.sh` (generalized: `--type ont|hifi`, `--nsg K`) and `run_separated_assembly.sh`; plus per-dataset scripts that reproduce the paper runs (PolySplit, reference-guided, sensitivity, timing)
 - `baselines/`  wrappers + cluster-to-subgenome mapping + read-eval for the comparison methods
   - `polycracker/{napus,tetraploid,hexaploid}/`  run polyCRACKER, map clusters to subgenomes (best 1:1), score
   - `subphaser/{napus,tetraploid,hexaploid}/`     YaHS scaffold + SubPhaser (scaffold-first), score
   These call the external tools polyCRACKER and SubPhaser, which must be installed separately.
+- `readdirect/`  assembly-free control: cluster raw reads by single-copy k-mer incidence and score vs truth (shows the assembly step is necessary)
 
 ## Dependencies
 Python 3 (numpy, scikit-learn, networkx) and the external tools Flye, bwa, samtools,
 minimap2, gsufsort (32- and 64-bit builds), KMC, YaHS, and SubPhaser (baseline only).
 
 ## Running
-Paths in the drivers are placeholders (`$DATA`, `$POLYSPLIT`, `$SUBPHASER`, `$FLYE_BIN`).
-Set them in `config.sh` for your environment and `source` it, then run a driver, e.g.:
+Set the paths in `config.sh` for your environment and `source` it. To separate mixed long reads
+into `K` subgenomes (`--type ont` or `--type hifi`) and then assemble each subgenome:
 ```
 source config.sh
-bash drivers/run_polysplit_nam0.sh
+bash drivers/run_polysplit.sh --reads reads.fq.gz --hic1 hic_R1.fq.gz --hic2 hic_R2.fq.gz \
+     --type ont --nsg 2 --work out/
+bash drivers/run_separated_assembly.sh --labels out/read_subg.tsv --reads reads.fq.gz \
+     --type ont --work out/ --hic1 hic_R1.fq.gz --hic2 hic_R2.fq.gz
 ```
-Each driver is idempotent: every stage skips if its output already exists.
+`run_polysplit.sh` writes per-read subgenome labels to `out/read_subg.tsv`; add
+`--ref REF --chrom-subg CS` for the optional accuracy evaluation against a reference. The
+per-dataset `run_polysplit_<name>.sh` scripts reproduce the exact runs reported in the paper.
+Every stage is idempotent: it skips if its output already exists.
 
 ## Data
 Sequencing inputs and the evaluation reference are not redistributed here; see the

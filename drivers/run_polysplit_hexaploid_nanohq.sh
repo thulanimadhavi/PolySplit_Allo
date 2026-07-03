@@ -14,7 +14,7 @@ CHROM_SUBG=$PKG/chrom_subg.hexaploid.tsv
 WORK=$DATA/polysplit_run_nanohq ; mkdir -p "$WORK"   # fresh dir (preserves the --nano-raw run)
 ASM=$WORK/flye_out/assembly.fasta
 
-FLYE_BIN=/path/to/flye/bin
+FLYE_BIN=${FLYE_BIN:-/path/to/flye/bin}
 BWA=bwa
 SAMTOOLS=samtools
 SEQKIT=seqkit

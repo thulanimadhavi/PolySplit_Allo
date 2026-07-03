@@ -15,7 +15,7 @@ WORK=$DATA/polysplit_run ; mkdir -p "$WORK"
 ASM=$WORK/flye_out/assembly.fasta
 
 # tools (nugget-validated)
-FLYE_BIN=/path/to/flye/bin
+FLYE_BIN=${FLYE_BIN:-/path/to/flye/bin}
 BWA=bwa
 SAMTOOLS=samtools
 SEQKIT=seqkit
