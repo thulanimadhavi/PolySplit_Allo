@@ -67,11 +67,8 @@ placed-chromosome size.
 
 | Genome | reads | mixed Flye | separated (Σ subgenomes) | reference |
 |---|---|---|---|---|
-<!-- | *B. napus* NAM0 | ONT | 916 | _[pending]_ | 978 | -->
 | *B. napus* NAM0 | HiFi | 992 | 992 | 978 |
-<!-- | *C. microcarpa* (4×) | ONT | 365 | _[pending]_ | 360 | -->
 | *C. microcarpa* (4×) | HiFi | 360 | 359 | 360 |
-<!-- | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[pending]_ | 587 | -->
 | *C. microcarpa* T1 (6×) | HiFi | 591 | 591 | 587 |
 
 Reference = summed placed (anchored) subgenome chromosomes; full reference genomes, including
