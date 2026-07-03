@@ -173,9 +173,9 @@ PolySplit read accuracies in main-text Table II (95–99%).
 
 | Genome | $K$ | chance % | ONT acc % | HiFi acc % |
 |---|---|---|---|---|
-| *B. napus* NAM0 | 2 | 50.0 | _[pending]_ | _[pending]_ |
-| *C. microcarpa* (4×) | 2 | 50.0 | _[pending]_ | _[pending]_ |
-| *C. microcarpa* T1 (6×) | 3 | 33.3 | _[pending]_ | _[pending]_ |
+| *B. napus* NAM0 | 2 | 50.0 | 54.8 | 57.2 |
+| *C. microcarpa* (4×) | 2 | 50.0 | 50.5 | 51.7 |
+| *C. microcarpa* T1 (6×) | 3 | 33.3 | 35.6 | 38.4 |
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;
