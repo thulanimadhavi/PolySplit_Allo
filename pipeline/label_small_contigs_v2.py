@@ -4,7 +4,7 @@ from collections import defaultdict
 import numpy as np
 
 K, MC = 15, 2
-HIC_FRAC = 0.55
+HIC_FRAC = float(os.environ.get("POLYSPLIT_HIC_FRAC", "0.55"))
 SAMPLE_PER_SG, CAP_BP = 30, 3_000_000
 CONTACTS = os.environ.get("POLYSPLIT_CONTACTS", "contacts.pkl")
 FASTA = os.environ.get("POLYSPLIT_FASTA", "../flye_out/assembly.fasta")
