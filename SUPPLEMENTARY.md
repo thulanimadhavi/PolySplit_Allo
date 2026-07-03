@@ -1,7 +1,7 @@
 # PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
-table numbering follows the manuscript order (Figures S1–S4, Tables S1–S4). Figures live in
+table numbering follows the manuscript order (Figures S1–S5, Tables S1–S5). Figures live in
 `figures/`; place the pristine PNGs there (do not pass them through any text processor).
 
 ## Supplementary Figures
@@ -47,16 +47,25 @@ The *B. napus* (NAM0) panels are left blank pending its assembly runs.
 ### Figure S4. Read-level confusion matrices across methods and species
 <p align="center"><img src="figures/FigS4_confusion_all.png" alt="Read-level confusion matrices, three species by four methods" width="100%"></p>
 
-Rows are the three allopolyploids; columns are the four methods, with PolySplit shown at
-its best chemistry (HiFi here). Within each panel, rows are the true subgenome and columns the
-predicted label (subgenomes, ambiguous, unassigned); each cell gives the number of reads (the cell
-colour is the row fraction, so the diagonal stands out), and the panel header gives the read
-accuracy and chemistry. For the methods that
-emit unlabelled clusters (polyCRACKER, SubPhaser), clusters are mapped to subgenomes by the best
-one-to-one assignment to truth. **PolySplit** concentrates on the diagonal (99.0% tetraploid,
-96.2% hexaploid, using no reference), whereas **polyCRACKER** collapses the subgenomes into a single
-cluster (46.5%, 41.0%) and **SubPhaser** leaks or scrambles them (76.7%, 38.8%). The reference-guided
-panels and the entire *B. napus* (NAM0) row are left blank pending those runs.
+Rows are the three allopolyploids; columns are the four methods, all shown at HiFi. Within each panel,
+rows are the true subgenome and columns the predicted label (subgenomes, ambiguous, unassigned);
+each cell gives the number of reads (the cell colour is the row fraction, so the diagonal stands
+out), and the panel header gives the read accuracy and chemistry. For the methods that emit
+unlabelled clusters (polyCRACKER, SubPhaser), clusters are mapped to subgenomes by the best
+one-to-one assignment to truth. **PolySplit** concentrates on the diagonal (98.7% *B. napus*, 99.0%
+tetraploid, 96.2% hexaploid, using no reference), whereas **polyCRACKER** collapses the subgenomes
+into a single cluster (83.0%, 50.1%, 41.0%) and **SubPhaser** leaks or scrambles them
+(56.2%, 64.5%, 38.8%). Figure S5 shows PolySplit and the reference-guided baseline on both chemistries.
+
+### Figure S5. PolySplit vs. the reference-guided baseline, across both chemistries
+<p align="center"><img src="figures/FigS5_confusion_chem.png" alt="Confusion matrices: PolySplit vs reference-guided, ONT and HiFi, three genomes" width="70%"></p>
+
+The two exact-$k$-mer methods on all three allopolyploids, with one row per chemistry (ONT and HiFi)
+per genome. Rows are the true subgenome, columns the predicted label; the cell colour is the row
+fraction and the panel header gives read accuracy against the same chromosome-anchored truth.
+PolySplit (reference-free) matches or exceeds the reference-guided signature scan on every genome and
+chemistry, and the gap is largest on error-prone ONT reads (e.g. *B. napus* 95.6% vs 81.7%): the
+read-level scan leaves many ONT reads ambiguous, whereas assembling first restores their subgenome.
 
 ## Supplementary Tables
 
