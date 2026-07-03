@@ -115,47 +115,59 @@ BUSCO completeness (C = single + duplicated) is high throughout; the elevated du
 | *C. microcarpa* 6× SG3 (exp. 227) | 220 (96.9) | 237 | 29.1 Mb | 91.9 (1.5) | ~100 | 99.7 |
 
 
-### Table S4. Parameter sensitivity (all three species, HiFi)
+### Table S4. Parameter sensitivity (all three species, ONT and HiFi)
 Strict read accuracy (correct / chromosome-truth, ambiguous and unassigned counted as errors) under
 wide variation of each decision threshold, holding the others at their default (**bold**), for all
-three allopolyploids at HiFi. $t$ and $\rho$ govern the reference-guided signature classifier
-(PolySplit-Ref); $\beta$ and $\alpha$ govern PolySplit read propagation. The defaults reproduce the
-Table III results, and accuracy is flat across a wide neighbourhood of every default, degrading only
-at extreme values (e.g. very large $\rho$, which rejects most reads as unassigned). No result hinges
-on a tuned value. $f_{\max}$ (signature copy cap) and the block-size floor are structural constants
-set from the data, not accuracy thresholds, and are described in Methods rather than swept here.
+three allopolyploids on both ONT and HiFi. $t$ and $\rho$ govern the reference-guided signature
+classifier (PolySplit-Ref); $\beta$ and $\alpha$ govern PolySplit read propagation. Accuracy is flat
+across a wide neighbourhood of every default and degrades only at extreme values (e.g. very large
+$\rho$, which rejects most reads as unassigned), so no result hinges on a tuned value. $f_{\max}$
+(signature copy cap) and the block-size floor are structural constants set from the data, not
+accuracy thresholds, and are described in Methods rather than swept here.
 
 **Minimum signature hits $t$** (PolySplit-Ref; $\rho=3$ fixed)
 
-| dataset | 1 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
-|---|---|---|---|---|---|---|---|---|
-| *C. microcarpa* (4×) | 98.9 | 98.9 | **98.9** | 98.9 | 98.9 | 98.9 | 98.9 | 98.8 |
-| *C. microcarpa* T1 (6×) | 96.9 | 96.9 | **96.9** | 96.9 | 96.9 | 96.8 | 96.6 | 96.3 |
-| *B. napus* NAM0 | 98.4 | 98.4 | **98.4** | 98.4 | 98.4 | 98.4 | 98.4 | 98.3 |
+| dataset | chem | 1 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
+|---|---|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | HiFi | 98.9 | 98.9 | **98.9** | 98.9 | 98.9 | 98.9 | 98.9 | 98.8 |
+| *C. microcarpa* (4×) | ONT | 92.3 | 92.3 | **92.3** | 92.3 | 92.2 | 92.1 | 91.8 | 91.1 |
+| *C. microcarpa* T1 (6×) | HiFi | 96.9 | 96.9 | **96.9** | 96.9 | 96.9 | 96.8 | 96.6 | 96.3 |
+| *C. microcarpa* T1 (6×) | ONT | 90.8 | 90.8 | **90.8** | 90.8 | 90.8 | 90.7 | 90.4 | 89.8 |
+| *B. napus* NAM0 | HiFi | 98.4 | 98.4 | **98.4** | 98.4 | 98.4 | 98.4 | 98.4 | 98.3 |
+| *B. napus* NAM0 | ONT | 81.7 | 81.7 | **81.7** | 81.6 | 81.2 | 80.7 | 79.5 | 77.4 |
 
 **Dominance ratio $\rho$** (PolySplit-Ref; $t=3$ fixed)
 
-| dataset | 1.5 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
-|---|---|---|---|---|---|---|---|---|
-| *C. microcarpa* (4×) | 99.3 | 99.2 | **98.9** | 98.4 | 96.7 | 93.1 | 81.9 | 67.5 |
-| *C. microcarpa* T1 (6×) | 98.3 | 97.8 | **96.9** | 94.3 | 88.6 | 82.4 | 69.1 | 53.6 |
-| *B. napus* NAM0 | 99.5 | 99.1 | **98.4** | 97.0 | 93.9 | 89.0 | 77.6 | 64.6 |
+| dataset | chem | 1.5 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
+|---|---|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | HiFi | 99.3 | 99.2 | **98.9** | 98.4 | 96.7 | 93.1 | 81.9 | 67.5 |
+| *C. microcarpa* (4×) | ONT | 93.0 | 92.8 | **92.3** | 91.4 | 89.0 | 83.6 | 67.1 | 47.2 |
+| *C. microcarpa* T1 (6×) | HiFi | 98.3 | 97.8 | **96.9** | 94.3 | 88.6 | 82.4 | 69.1 | 53.6 |
+| *C. microcarpa* T1 (6×) | ONT | 93.0 | 92.3 | **90.8** | 87.1 | 79.9 | 71.9 | 53.1 | 32.3 |
+| *B. napus* NAM0 | HiFi | 99.5 | 99.1 | **98.4** | 97.0 | 93.9 | 89.0 | 77.6 | 64.6 |
+| *B. napus* NAM0 | ONT | 85.1 | 83.9 | **81.7** | 78.3 | 72.4 | 64.1 | 45.9 | 28.9 |
 
 **Read confidence floor $\beta$** (PolySplit)
 
-| dataset | 0.50 | 0.55 | **0.60** | 0.70 | 0.80 | 0.90 |
-|---|---|---|---|---|---|---|
-| *C. microcarpa* (4×) | 99.4 | 99.1 | **99.0** | 98.8 | 98.7 | 98.6 |
-| *C. microcarpa* T1 (6×) | 96.5 | 96.3 | **96.2** | 95.5 | 95.1 | 94.9 |
-| *B. napus* NAM0 | 98.8 | 98.8 | **98.7** | 98.5 | 98.4 | 98.2 |
+| dataset | chem | 0.50 | 0.55 | **0.60** | 0.70 | 0.80 | 0.90 |
+|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | HiFi | 99.4 | 99.1 | **99.0** | 98.8 | 98.7 | 98.6 |
+| *C. microcarpa* (4×) | ONT | 98.1 | 97.7 | **97.2** | 96.0 | 91.4 | 86.0 |
+| *C. microcarpa* T1 (6×) | HiFi | 96.5 | 96.3 | **96.2** | 95.5 | 95.1 | 94.9 |
+| *C. microcarpa* T1 (6×) | ONT | 93.6 | 93.1 | **92.3** | 89.1 | 81.8 | 72.1 |
+| *B. napus* NAM0 | HiFi | 98.8 | 98.8 | **98.7** | 98.5 | 98.4 | 98.2 |
+| *B. napus* NAM0 | ONT | 96.9 | 96.3 | **95.6** | 93.8 | 92.1 | 87.8 |
 
 **Small-contig recovery floor $\alpha$** (PolySplit)
 
-| dataset | 0.40 | 0.50 | **0.55** | 0.60 | 0.70 | 0.80 |
-|---|---|---|---|---|---|---|
-| *C. microcarpa* (4×) | 99.0 | 99.0 | **99.0** | 99.0 | 99.0 | 99.0 |
-| *C. microcarpa* T1 (6×) | 96.0 | 96.3 | **96.3** | 96.2 | 96.1 | 96.0 |
-| *B. napus* NAM0 | 98.7 | 98.7 | **98.7** | 98.7 | 98.7 | 98.3 |
+| dataset | chem | 0.40 | 0.50 | **0.55** | 0.60 | 0.70 | 0.80 |
+|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | HiFi | 99.0 | 99.0 | **99.0** | 99.0 | 99.0 | 99.0 |
+| *C. microcarpa* (4×) | ONT | 97.2 | 97.2 | **97.2** | 97.1 | 96.6 | 95.3 |
+| *C. microcarpa* T1 (6×) | HiFi | 96.0 | 96.3 | **96.3** | 96.2 | 96.1 | 96.0 |
+| *C. microcarpa* T1 (6×) | ONT | 92.4 | 92.3 | **92.3** | 92.3 | 92.1 | 91.9 |
+| *B. napus* NAM0 | HiFi | 98.7 | 98.7 | **98.7** | 98.7 | 98.7 | 98.3 |
+| *B. napus* NAM0 | ONT | 95.2 | 95.2 | **95.2** | 95.2 | 95.0 | 94.6 |
 
 ### Table S5. Assembly-free read-direct control (no assembly, no reference)
 Test of whether subgenome signal is recoverable from raw reads *without* the assembly step. Raw
