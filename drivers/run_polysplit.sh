@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # PolySplit-Allo end-to-end: assemble -> Hi-C blocks -> homoeolog pairing -> subgenome label -> per-read labels.
 # usage: source config.sh; bash drivers/run_polysplit.sh --reads R --hic1 H1 --hic2 H2 \
-#          --type ont|hifi --nsg K --work OUTDIR [--ref REF --chrom-subg CS]   (--ref/--chrom-subg = evaluation only)
+#          --type ont|hifi --nsg K --work OUTDIR [--flye-preset nano-raw] [--ref REF --chrom-subg CS]   (--ref/--chrom-subg = evaluation only)
 set -uo pipefail
 
-READS=""; HIC1=""; HIC2=""; TYPE=""; NSG=""; WORK=""; REF=""; CHROM_SUBG=""
+READS=""; HIC1=""; HIC2=""; TYPE=""; NSG=""; WORK=""; REF=""; CHROM_SUBG=""; FP=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --reads) READS=$2; shift 2;;
@@ -15,6 +15,7 @@ while [ $# -gt 0 ]; do
     --work) WORK=$2; shift 2;;
     --ref) REF=$2; shift 2;;
     --chrom-subg) CHROM_SUBG=$2; shift 2;;
+    --flye-preset) FP=$2; shift 2;;
     *) echo "unknown arg: $1"; exit 1;;
   esac
 done
@@ -26,6 +27,7 @@ case "$TYPE" in
   hifi) FLYE_PRESET="--pacbio-hifi"; MMX="map-hifi";;
   *) echo "--type must be ont or hifi"; exit 1;;
 esac
+if [ -n "$FP" ]; then case "$FP" in --*) FLYE_PRESET=$FP;; *) FLYE_PRESET="--$FP";; esac; fi
 
 THREADS=${THREADS:-48}; K_PAIR=33; BETA=0.60
 PY=python3; PIPE=$POLYSPLIT/pipeline
