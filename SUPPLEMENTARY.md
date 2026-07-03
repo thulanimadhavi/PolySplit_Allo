@@ -42,7 +42,7 @@ genuine homoeologs share long sequence tracts and occupy the extreme upper tail,
 from the background of incidental matches; the strong-edge cutoff $\tau_H$ (dashed line) retains the
 upper-tail edges as homoeolog links, and is read off this distribution rather than tuned on truth
 labels. The more contiguous HiFi assemblies push the homoeolog tail to higher $w_{\mathrm{kmer}}$.
-The *B. napus* (NAM0) panels are left blank  its assembly runs.
+The *B. napus* (NAM0) panels are left blank pending its assembly runs.
 
 ### Figure S4. Read-level confusion matrices across methods and species
 <p align="center"><img src="figures/FigS4_confusion_all.png" alt="Read-level confusion matrices, three species by four methods" width="100%"></p>
@@ -56,7 +56,7 @@ emit unlabelled clusters (polyCRACKER, SubPhaser), clusters are mapped to subgen
 one-to-one assignment to truth. **PolySplit** concentrates on the diagonal (99.0% tetraploid,
 96.2% hexaploid, using no reference), whereas **polyCRACKER** collapses the subgenomes into a single
 cluster (46.5%, 41.0%) and **SubPhaser** leaks or scrambles them (76.7%, 38.8%). The reference-guided
-panels and the entire *B. napus* (NAM0) row are left blank  those runs.
+panels and the entire *B. napus* (NAM0) row are left blank pending those runs.
 
 ## Supplementary Tables
 
@@ -67,12 +67,15 @@ placed-chromosome size.
 
 | Genome | reads | mixed Flye | separated (Σ subgenomes) | reference |
 |---|---|---|---|---|
-| *B. napus* NAM0 | ONT | _[]_ | _[]_ | 1008 |
-| *B. napus* NAM0 | HiFi | _[]_ | _[]_ | 1008 |
-| *C. microcarpa* (4×) | ONT | 365 | _[]_ | 384 |
-| *C. microcarpa* (4×) | HiFi | 360 | _[]_ | 384 |
-| *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[]_ | 608 |
-| *C. microcarpa* T1 (6×) | HiFi | 591 | _[]_ | 608 |
+<!-- | *B. napus* NAM0 | ONT | 916 | _[pending]_ | 978 | -->
+| *B. napus* NAM0 | HiFi | 992 | 992 | 978 |
+<!-- | *C. microcarpa* (4×) | ONT | 365 | _[pending]_ | 360 | -->
+| *C. microcarpa* (4×) | HiFi | 360 | 359 | 360 |
+<!-- | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | 615 | _[pending]_ | 587 | -->
+| *C. microcarpa* T1 (6×) | HiFi | 591 | 591 | 587 |
+
+Reference = summed placed (anchored) subgenome chromosomes; full reference genomes, including
+unplaced scaffolds, are 1008 / 384 / 608 Mb (Table I).
 
 ### Table S2. Per-subgenome precision, recall, and F1
 Breakdown of the macro-averaged values in main Table III. Abbreviations: P, precision; R, recall;
@@ -81,44 +84,98 @@ but are never false positives.
 
 | Genome | reads | subgenome | P | R | F1 |
 |---|---|---|---|---|---|
-| *B. napus* NAM0 | ONT | A | _[]_ | _[]_ | _[]_ |
-| *B. napus* NAM0 | ONT | C | _[]_ | _[]_ | _[]_ |
+| *B. napus* NAM0 | ONT | A | 96.6 | 95.7 | 96.1 |
+| *B. napus* NAM0 | ONT | C | 98.4 | 95.5 | 96.9 |
+| *B. napus* NAM0 | HiFi | A | 98.5 | 98.6 | 98.5 |
+| *B. napus* NAM0 | HiFi | C | 99.2 | 98.8 | 99.0 |
 | *C. microcarpa* (4×) | ONT | S1 | 98.9 | 96.8 | 97.8 |
 | *C. microcarpa* (4×) | ONT | S2 | 98.0 | 97.6 | 97.8 |
+| *C. microcarpa* (4×) | HiFi | S1 | 99.9 | 98.7 | 99.3 |
+| *C. microcarpa* (4×) | HiFi | S2 | 99.2 | 99.5 | 99.3 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S1 | 99.6 | 88.7 | 93.8 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S2 | 85.6 | 96.5 | 90.7 |
 | *C. microcarpa* T1 (6×) | ONT (`--nano-hq`) | S3 | 99.1 | 92.1 | 95.5 |
+| *C. microcarpa* T1 (6×) | HiFi | S1 | 96.7 | 96.1 | 96.4 |
+| *C. microcarpa* T1 (6×) | HiFi | S2 | 94.0 | 98.1 | 96.0 |
+| *C. microcarpa* T1 (6×) | HiFi | S3 | 99.0 | 94.8 | 96.9 |
 
 ### Table S3. Subgenome-resolved assembly quality (HiFi)
 Each subgenome's reads were assembled independently (Flye) and scaffolded with Hi-C (YaHS).
-Size is compared to the expected subgenome size; purity is the fraction of assembly length whose
-best alignment is to the intended subgenome rather than its homoeolog. A clean separation shows
-high purity and low BUSCO duplication (homoeologous copies removed); for contrast, the fused
-scaffold-first assembly is chimeric (low purity, high duplication).
+Purity (the fraction of assembly length whose best alignment is to the intended subgenome rather
+than its homoeolog) is the separation metric: near-100% purity confirms homoeologs were not fused.
+BUSCO completeness (C = single + duplicated) is high throughout; the elevated duplication (D) in the
+*B. napus* subgenomes reflects retained allelic haplotypes (`--keep-haplotypes`) and the ancestral
+*Brassica* genome triplication, not homoeolog fusion, which the purity rules out.
 
 | Assembly | Size Mb (% exp.) | Contigs | N50 | BUSCO C% (D%) | Back-map % | Purity % |
 |---|---|---|---|---|---|---|
-| *B. napus* A (exp. 419) | _[]_ | | | | | |
-| *B. napus* C (exp. 559) | _[]_ | | | | | |
-| *C. microcarpa* 4× SG1 (exp. 188) | _[]_ | | | | | |
-| *C. microcarpa* 4× SG2 (exp. 172) | _[]_ | | | | | |
-| *C. microcarpa* 6× SG1 (exp. 188) | _[]_ | | | | | |
-| *C. microcarpa* 6× SG2 (exp. 172) | _[]_ | | | | | |
-| *C. microcarpa* 6× SG3 (exp. 227) | _[]_ | | | | | |
+| *B. napus* A (exp. 419) | 428 (102) | 691 | 25.3 Mb | 98.2 (29.7) | ~100 | 100.0 |
+| *B. napus* C (exp. 559) | 564 (101) | 296 | 57.7 Mb | 96.7 (30.6) | ~100 | 98.6 |
+| *C. microcarpa* 4× SG1 (exp. 188) | 187 (99.5) | 64 | 29.3 Mb | 99.2 (1.5) | ~100 | 99.9 |
+| *C. microcarpa* 4× SG2 (exp. 172) | 172 (100.0) | 93 | 25.9 Mb | 99.7 (1.2) | ~100 | 99.9 |
+| *C. microcarpa* 6× SG1 (exp. 188) | 191 (101.6) | 147 | 46.4 Mb | 97.2 (6.3) | ~100 | 91.6 |
+| *C. microcarpa* 6× SG2 (exp. 172) | 180 (104.7) | 196 | 24.0 Mb | 99.4 (6.5) | ~100 | 96.0 |
+| *C. microcarpa* 6× SG3 (exp. 227) | 220 (96.9) | 237 | 29.1 Mb | 91.9 (1.5) | ~100 | 99.7 |
 
 
-### Table S4. Parameter sensitivity
-Read accuracy under variation of each fixed threshold around its default, holding the others fixed;
-defaults in **bold**. Demonstrates that no result hinges on a tuned value. _[: sweep to run]_
+### Table S4. Parameter sensitivity (all three species, HiFi)
+Strict read accuracy (correct / chromosome-truth, ambiguous and unassigned counted as errors) under
+wide variation of each decision threshold, holding the others at their default (**bold**), for all
+three allopolyploids at HiFi. $t$ and $\rho$ govern the reference-guided signature classifier
+(PolySplit-Ref); $\beta$ and $\alpha$ govern PolySplit read propagation. The defaults reproduce the
+Table III results, and accuracy is flat across a wide neighbourhood of every default, degrading only
+at extreme values (e.g. very large $\rho$, which rejects most reads as unassigned). No result hinges
+on a tuned value. $f_{\max}$ (signature copy cap) and the block-size floor are structural constants
+set from the data, not accuracy thresholds, and are described in Methods rather than swept here.
 
-| Parameter | values tested | read accuracy |
-|---|---|---|
-| signature copy cap $f_{\max}$ | 2 / **3** / 5 | _[]_ |
-| min signature hits $t$ | 2 / **3** / 5 | _[]_ |
-| dominance ratio $\rho$ | 2 / **3** / 4 | _[]_ |
-| block floor (Mb) | 1 / **3** / 5 | _[]_ |
-| recovery floor $\alpha$ | 0.50 / **0.55** / 0.60 | _[]_ |
-| read confidence $\beta$ | 0.55 / **0.60** / 0.65 | _[]_ |
+**Minimum signature hits $t$** (PolySplit-Ref; $\rho=3$ fixed)
+
+| dataset | 1 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
+|---|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | 98.9 | 98.9 | **98.9** | 98.9 | 98.9 | 98.9 | 98.9 | 98.8 |
+| *C. microcarpa* T1 (6×) | 96.9 | 96.9 | **96.9** | 96.9 | 96.9 | 96.8 | 96.6 | 96.3 |
+| *B. napus* NAM0 | 98.4 | 98.4 | **98.4** | 98.4 | 98.4 | 98.4 | 98.4 | 98.3 |
+
+**Dominance ratio $\rho$** (PolySplit-Ref; $t=3$ fixed)
+
+| dataset | 1.5 | 2 | **3** | 5 | 10 | 20 | 50 | 100 |
+|---|---|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | 99.3 | 99.2 | **98.9** | 98.4 | 96.7 | 93.1 | 81.9 | 67.5 |
+| *C. microcarpa* T1 (6×) | 98.3 | 97.8 | **96.9** | 94.3 | 88.6 | 82.4 | 69.1 | 53.6 |
+| *B. napus* NAM0 | 99.5 | 99.1 | **98.4** | 97.0 | 93.9 | 89.0 | 77.6 | 64.6 |
+
+**Read confidence floor $\beta$** (PolySplit)
+
+| dataset | 0.50 | 0.55 | **0.60** | 0.70 | 0.80 | 0.90 |
+|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | 99.4 | 99.1 | **99.0** | 98.8 | 98.7 | 98.6 |
+| *C. microcarpa* T1 (6×) | 96.5 | 96.3 | **96.2** | 95.5 | 95.1 | 94.9 |
+| *B. napus* NAM0 | 98.8 | 98.8 | **98.7** | 98.5 | 98.4 | 98.2 |
+
+**Small-contig recovery floor $\alpha$** (PolySplit)
+
+| dataset | 0.40 | 0.50 | **0.55** | 0.60 | 0.70 | 0.80 |
+|---|---|---|---|---|---|---|
+| *C. microcarpa* (4×) | 99.0 | 99.0 | **99.0** | 99.0 | 99.0 | 99.0 |
+| *C. microcarpa* T1 (6×) | 96.0 | 96.3 | **96.3** | 96.2 | 96.1 | 96.0 |
+| *B. napus* NAM0 | 98.7 | 98.7 | **98.7** | 98.7 | 98.7 | 98.3 |
+
+### Table S5. Assembly-free read-direct control (no assembly, no reference)
+Test of whether subgenome signal is recoverable from raw reads *without* the assembly step. Raw
+reads are clustered directly by single-copy $k$-mer incidence (KMC $k=21$ band $\to$ read$\times$feature
+matrix $\to$ truncated SVD $+$ $K$-means, $K$ subgenomes) and scored by the best one-to-one
+cluster$\to$truth assignment on an 80,000-read sample, against the same chromosome-anchored truth as
+every other method. This is the assembly-free **ablation** of PolySplit, not a variant of it:
+PolySplit's Hi-C blocking, homoeolog pairing, and repeat-composition contrast all require assembled
+contigs and cannot run on raw reads. Accuracy near the $1/K$ chance line means the subgenome signal
+is not accessible in raw reads and the assembly step is necessary. Contrast with the assembled
+PolySplit read accuracies in main-text Table II (95–99%).
+
+| Genome | $K$ | chance % | ONT acc % | HiFi acc % |
+|---|---|---|---|---|
+| *B. napus* NAM0 | 2 | 50.0 | _[pending]_ | _[pending]_ |
+| *C. microcarpa* (4×) | 2 | 50.0 | _[pending]_ | _[pending]_ |
+| *C. microcarpa* T1 (6×) | 3 | 33.3 | _[pending]_ | _[pending]_ |
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;

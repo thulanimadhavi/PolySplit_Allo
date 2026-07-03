@@ -21,8 +21,11 @@ def structural_dechimerize(blocks, G, strong_edges, lengths, verbose=True):
         new = []
         for com in blocks:
             sub = G.subgraph(com)
-            parts = [list(c) for c in louvain_communities(sub, weight="weight",
-                                                          resolution=SUBRES, seed=1)]
+            if sub.number_of_edges() == 0 or sub.size(weight="weight") == 0:
+                parts = [list(com)]          # edgeless/zero-weight subgraph: cannot re-cluster, keep whole
+            else:
+                parts = [list(c) for c in louvain_communities(sub, weight="weight",
+                                                              resolution=SUBRES, seed=1)]
             big = [p for p in parts if sum(lengths[c] for c in p) >= MIN_SUB]
             seam = None
             if len(big) >= 2:
