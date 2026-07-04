@@ -1,7 +1,7 @@
 # PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
-table numbering follows the manuscript order (Figures S1–S5, Tables S1–S5). Figures live in
+table numbering follows the manuscript order (Figures S1–S5, Tables S1–S6). Figures live in
 `figures/`; place the pristine PNGs there (do not pass them through any text processor).
 
 ## Supplementary Figures
@@ -194,6 +194,26 @@ PolySplit read accuracies in main-text Table II (95–99%).
 | *B. napus* NAM0 | 2 | 50.0 | 54.8 | 57.2 |
 | *C. microcarpa* (4×) | 2 | 50.0 | 50.5 | 51.7 |
 | *C. microcarpa* T1 (6×) | 3 | 33.3 | 35.6 | 38.4 |
+
+### Table S6. Subgenome-separation runtime by stage
+Wall-clock of the reference-free separation stages only, measured on a single node
+(two Intel Xeon Gold 6526Y CPUs, 32 cores / 64 threads, 2 TB RAM). Times **exclude** the one-off
+Flye pre-assembly and the Hi-C and read-to-contig alignments, which are shared by every
+assembly-based method and are performed by standard aligners rather than by PolySplit-Allo. The
+three timed stages are homoeolog $k$-mer pairing (generalized suffix array + LCP), block labelling
+(de-chimerization, repeat-composition contrast, homoeolog repair, small-contig recovery), and
+identity-weighted read propagation. Read propagation is seconds even for millions of reads; the
+one-time suffix-array build dominates. The **Total** is the single-node separation wall-clock
+reported in the Table II "Time" column.
+
+| Genome | Reads | Homoeolog pairing | Block labelling | Read propagation | **Total** |
+|---|---|---|---|---|---|
+| *B. napus* NAM0 (4×) | HiFi | 9m 44s | 6m 33s | 33s | **16m 50s** |
+| *B. napus* NAM0 (4×) | ONT | 8m 55s | 5m 58s | 36s | **15m 29s** |
+| *C. microcarpa* (4×) | HiFi | 3m 12s | 3m 00s | 6s | **6m 18s** |
+| *C. microcarpa* (4×) | ONT | 3m 22s | 1m 57s | 9s | **5m 28s** |
+| *C. microcarpa* T1 (6×) | HiFi | 5m 53s | 3m 38s | 13s | **9m 44s** |
+| *C. microcarpa* T1 (6×) | ONT | 5m 41s | 5m 02s | 12s | **10m 55s** |
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;
