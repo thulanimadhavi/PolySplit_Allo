@@ -1,12 +1,24 @@
 # PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
-table numbering follows the manuscript order (Figures S1–S5, Tables S1–S6). Figures live in
+table numbering follows the manuscript order (Figures S1–S6, Tables S1–S6). Figures live in
 `figures/`; place the pristine PNGs there (do not pass them through any text processor).
 
 ## Supplementary Figures
 
-### Figure S1. The full PolySplit pipeline
+### Figure S1. PolySplit-Ref: reference-guided signature extraction
+<p align="center"><img src="figures/Assembly_ref_based.png" alt="PolySplit-Ref reference-guided signature extraction schematic" width="75%"></p>
+
+A generalized suffix array and LCP array are built over the two subgenome sequences (panels 1–4; toy
+example $k=3$, real $k=33$), grouping identical $k$-mers with the subgenome(s) in which each occurs.
+$k$-mers shared by both subgenomes are discarded, leaving disjoint per-subgenome signature sets
+(panel 5); each $k$-mer is then canonicalized (merged with its reverse complement) and high-copy
+$k$-mers are removed by the repeat filter (panel 6). Each read is scanned and its canonical $k$-mers
+matched to the sets; a decision rule (minimum hits $t$, dominance ratio $\rho$) labels the read as one
+subgenome or ambiguous (panel 7). This is the reference-guided upper-bound baseline (PolySplit-Ref,
+Methods §II-B); it is not part of the reference-free PolySplit-Allo workflow.
+
+### Figure S2. The full PolySplit pipeline
 <p align="center"><img src="figures/Denovo_assembly_polysplit.png" alt="Full PolySplit pipeline schematic" width="100%"></p>
 
 Step-by-step schematic expanding the four stages summarized in main-text Fig. 2.
@@ -21,7 +33,7 @@ homoeologs share their label, and small contigs left out of blocks are recovered
 **(D)** Reads are realigned to the labelled contigs and assigned by identity-weighted voting; each
 subgenome is then assembled and Hi-C-scaffolded independently, so homoeologs are never fused.
 
-### Figure S2. Exact k-mer survival on raw reads, per dataset
+### Figure S3. Exact k-mer survival on raw reads, per dataset
 <p align="center"><img src="figures/FigS2_kmer_survival.png" alt="Per-dataset exact k-mer survival vs k for ONT and HiFi" width="100%"></p>
 
 Fraction of a read's $k$-mers that are error-free (per-base identity raised to the
@@ -33,7 +45,7 @@ before any exact-$k$-mer analysis: assembly restores the exact $k$-mer structure
 lack, so the method is robust to read chemistry. $^{*}$The NAM0 HiFi value is the chemistry-typical
 ~99.7% (its HiFi run is in progress) and will be replaced with the measured identity.
 
-### Figure S3. Homoeolog shared-33-mer edge-weight distributions, per dataset and chemistry
+### Figure S4. Homoeolog shared-33-mer edge-weight distributions, per dataset and chemistry
 <p align="center"><img src="figures/FigS3_edge_weights.png" alt="Per-dataset shared-33-mer edge-weight distributions" width="100%"></p>
 
 Distribution of the number of shared canonical 33-mers between contig pairs,
@@ -44,7 +56,7 @@ upper-tail edges as homoeolog links, and is read off this distribution rather th
 labels. The more contiguous HiFi assemblies push the homoeolog tail to higher $w_{\mathrm{kmer}}$.
 The *B. napus* (NAM0) panels are left blank pending its assembly runs.
 
-### Figure S4. Read-level confusion matrices across methods and species
+### Figure S5. Read-level confusion matrices across methods and species
 <p align="center"><img src="figures/FigS4_confusion_all.png" alt="Read-level confusion matrices, three species by four methods" width="100%"></p>
 
 Rows are the three allopolyploids; columns are the four methods, all shown at HiFi. Within each panel,
@@ -55,9 +67,9 @@ unlabelled clusters (polyCRACKER, SubPhaser), clusters are mapped to subgenomes 
 one-to-one assignment to truth. **PolySplit** concentrates on the diagonal (98.7% *B. napus*, 99.0%
 tetraploid, 96.2% hexaploid, using no reference), whereas **polyCRACKER** collapses the subgenomes
 into a single cluster (83.0%, 50.1%, 41.0%) and **SubPhaser** leaks or scrambles them
-(56.2%, 64.5%, 38.8%). Figure S5 shows PolySplit and the reference-guided baseline on both chemistries.
+(56.2%, 64.5%, 38.8%). Figure S6 shows PolySplit and the reference-guided baseline on both chemistries.
 
-### Figure S5. PolySplit vs. the reference-guided baseline, across both chemistries
+### Figure S6. PolySplit vs. the reference-guided baseline, across both chemistries
 <p align="center"><img src="figures/FigS5_confusion_chem.png" alt="Confusion matrices: PolySplit vs reference-guided, ONT and HiFi, three genomes" width="70%"></p>
 
 The two exact-$k$-mer methods on all three allopolyploids, with one row per chemistry (ONT and HiFi)
