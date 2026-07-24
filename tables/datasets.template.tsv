@@ -1,0 +1,10 @@
+# Config for make_table_s7.py  (tab-separated; header line ignored)
+# columns: name	reads	run_dir	chrom_map
+# run_dir must contain contigs_to_ref.paf and all_contig_labels_repaired.tsv
+name	reads	run_dir	chrom_map
+B. napus NAM0 (4x)	ONT	/path/to/NAM0/polysplit_run	tables/chrom_subg.nam0.tsv
+B. napus NAM0 (4x)	HiFi	/path/to/NAM0/polysplit_run_hifi	tables/chrom_subg.nam0.tsv
+C. microcarpa (4x)	ONT	/path/to/Tetraploid/polysplit_run	tables/chrom_subg.tetraploid.tsv
+C. microcarpa (4x)	HiFi	/path/to/Tetraploid/polysplit_run_hifi	tables/chrom_subg.tetraploid.tsv
+C. microcarpa T1 (6x)	ONT	/path/to/Hexaploid/polysplit_run_nanohq	tables/chrom_subg.hexaploid.tsv
+C. microcarpa T1 (6x)	HiFi	/path/to/Hexaploid/polysplit_run_hifi	tables/chrom_subg.hexaploid.tsv
