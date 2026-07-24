@@ -1,7 +1,7 @@
 # PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
-table numbering follows the manuscript order (Figures S1–S6, Tables S1–S6). Figures live in
+table numbering follows the manuscript order (Figures S1–S6, Tables S1–S7). Figures live in
 `figures/`; place the pristine PNGs there (do not pass them through any text processor).
 
 ## Supplementary Figures
@@ -226,6 +226,19 @@ reported in the Table II "Time" column.
 | *C. microcarpa* (4×) | ONT | 3m 22s | 1m 57s | 9s | **5m 28s** |
 | *C. microcarpa* T1 (6×) | HiFi | 5m 53s | 3m 38s | 13s | **9m 44s** |
 | *C. microcarpa* T1 (6×) | ONT | 5m 41s | 5m 02s | 12s | **10m 55s** |
+
+### Table S7. Contig misplacement, per dataset and read chemistry
+Diagnostic of the residual impurity: how many assembled contigs are placed in the wrong subgenome. A contig is *misplaced* when the subgenome PolySplit assigns it differs from its true-majority subgenome (the subgenome most of its length aligns to under best-identity alignment to the chromosome-anchored reference); contigs with no anchored alignment are excluded. *Placement bp accuracy* is the fraction of anchored contig length in correctly-placed contigs. The misplaced sequence sits mostly in a few large (>100 kb) contigs; in the higher-impurity datasets these carry the bulk of it (96% of misplaced bp on *B. napus* HiFi, 95–98% on *C. microcarpa* 6×), so the errors are concentrated rather than diffuse. They originate at the repeat-composition block-labelling step (Methods §II-C; Fig. S2C), not from intra-contig chimeras. *C. microcarpa* 4× is essentially clean; the hexaploid (near-identical S1/S2) is the hardest case. Complements the per-subgenome assembly purity in Table S3.
+
+| Genome | reads | contigs (anchored) | misplaced | misplaced (Mb) | placement bp acc. % | large (>100 kb) misplaced |
+|---|---|---|---|---|---|---|
+| *B. napus* NAM0 (4×) | ONT | 1,972 | 132 | 8.40 | 99.06 | 22 (6.09 Mb) |
+| *B. napus* NAM0 (4×) | HiFi | 1,013 | 34 | 8.81 | 99.09 | 10 (8.47 Mb) |
+| *C. microcarpa* (4×) | ONT | 1,501 | 79 | 1.52 | 99.57 | 4 (0.20 Mb) |
+| *C. microcarpa* (4×) | HiFi | 128 | 9 | 0.28 | 99.92 | 1 (0.23 Mb) |
+| *C. microcarpa* T1 (6×) | ONT | 449 | 44 | 20.07 | 96.59 | 12 (19.64 Mb) |
+| *C. microcarpa* T1 (6×) | HiFi | 841 | 54 | 13.08 | 97.76 | 12 (12.37 Mb) |
+
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;
