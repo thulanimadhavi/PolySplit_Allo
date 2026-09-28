@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # PolySplit-Allo end-to-end: assemble -> Hi-C blocks -> homoeolog pairing -> subgenome label -> per-read labels.
 # usage: source config.sh; bash drivers/run_polysplit.sh --reads R --hic1 H1 --hic2 H2 \
-#          --type ont|hifi --nsg K --work OUTDIR [--flye-preset nano-raw] [--ref REF --chrom-subg CS]   (--ref/--chrom-subg = evaluation only)
+#          --type ont|hifi --nsg K --work OUTDIR [--flye-preset nano-raw] [--assembler flye|hifiasm] [--ref REF --chrom-subg CS]
+#          (--ref/--chrom-subg = evaluation only; --assembler hifiasm = hifiasm -l0, HiFi reads only)
 set -uo pipefail
 
-READS=""; HIC1=""; HIC2=""; TYPE=""; NSG=""; WORK=""; REF=""; CHROM_SUBG=""; FP=""
+READS=""; HIC1=""; HIC2=""; TYPE=""; NSG=""; WORK=""; REF=""; CHROM_SUBG=""; FP=""; ASSEMBLER=flye
 while [ $# -gt 0 ]; do
   case "$1" in
     --reads) READS=$2; shift 2;;
@@ -16,6 +17,7 @@ while [ $# -gt 0 ]; do
     --ref) REF=$2; shift 2;;
     --chrom-subg) CHROM_SUBG=$2; shift 2;;
     --flye-preset) FP=$2; shift 2;;
+    --assembler) ASSEMBLER=$2; shift 2;;
     *) echo "unknown arg: $1"; exit 1;;
   esac
 done
@@ -34,9 +36,20 @@ PY=python3; PIPE=$POLYSPLIT/pipeline
 FLYE_BIN=${FLYE_BIN:-/path/to/flye/bin}
 BWA=bwa; SAMTOOLS=samtools; MINIMAP2=minimap2; GSUFSORT=gsufsort; SEQKIT=seqkit
 mkdir -p "$WORK"; ASM=$WORK/flye_out/assembly.fasta
+if [ "$ASSEMBLER" = hifiasm ]; then
+  [ "$TYPE" = hifi ] || { echo "--assembler hifiasm needs --type hifi"; exit 1; }
+  ASM=$WORK/hifiasm/asm.bp.p_ctg.fa
+fi
 log(){ echo "### $* | $(date) ###"; }
 
 # Stage 1: de-novo assembly
+if [ "$ASSEMBLER" = hifiasm ] && [ ! -s "$ASM" ]; then
+  log "Stage 1: hifiasm -l0"
+  mkdir -p "$WORK/hifiasm"
+  hifiasm -o "$WORK/hifiasm/asm" -t "$THREADS" -l0 "$READS" 2> "$WORK/hifiasm/hifiasm.log"
+  awk '/^S/{print ">"$2"\n"$3}' "$WORK/hifiasm/asm.bp.p_ctg.gfa" > "$ASM"
+  [ -s "$ASM" ] || { echo "!! hifiasm did not finish; check $WORK/hifiasm/hifiasm.log"; exit 1; }
+fi
 if [ ! -s "$ASM" ]; then
   export PATH="$FLYE_BIN:$PATH"
   log "Stage 1: Flye $FLYE_PRESET"

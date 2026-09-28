@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, pickle
+import sys, os, pickle
 from collections import defaultdict, Counter
 import numpy as np
 import networkx as nx
@@ -10,7 +10,8 @@ for ch, v in zip(b"ACGTacgt", [0, 1, 2, 3, 0, 1, 2, 3]):
     MAP[ch] = v
 MIN_LEN, MIN_BLOCK, MIN_SUB = 50000, 3000000, 1000000
 K, MC_CONTIG, MC_BLOCK = 15, 2, 10
-RES, SUBRES, PAIR_MIN = 2.5, 5.0, 100000
+RES, SUBRES = 2.5, 5.0
+PAIR_MIN = int(os.environ.get("POLYSPLIT_PAIR_MIN", "100000"))   # tau_H, strong homoeolog edge
 MAX_ITERS = 4
 SWEEP = [(100000, 1), (50000, 2), (30000, 3), (20000, 3), (20000, 5)]   # (edge_min, min_edges)
 

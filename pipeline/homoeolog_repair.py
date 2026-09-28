@@ -8,7 +8,7 @@ TRUTH = os.environ.get("POLYSPLIT_TRUTH", "../purity_compare/wg_purity.per_conti
 EDGES = os.environ.get("POLYSPLIT_EDGES", "homoeolog_edges.tsv")
 LABELS_IN = os.environ.get("POLYSPLIT_LABELS_IN", "all_contig_labels_v2.tsv")
 OUT = os.environ.get("POLYSPLIT_OUT", "all_contig_labels_repaired.tsv")
-EDGE_MIN = 100000   # strong homoeolog twins only (= the pairing/seam floor; ~0 false cross-subgenome)
+EDGE_MIN = int(os.environ.get("POLYSPLIT_PAIR_MIN", "100000"))   # strong homoeolog twins only (= tau_H)
 MARGIN = 1.0        # flip iff same-label twin weight > other-label twin weight
 
 with open(CONTACTS, "rb") as f:
