@@ -1,7 +1,7 @@
 # PolySplit-Allo - Supplementary Materials
 
 This page hosts the supplementary material linked from the manuscript. Supplementary figure and
-table numbering follows the manuscript order (Figures S1–S6, Tables S1–S12). Figures live in
+table numbering follows the manuscript order (Figures S1–S6, Tables S1–S13). Figures live in
 `figures/`; place the pristine PNGs there (do not pass them through any text processor).
 
 ## Abbreviations and terms
@@ -359,6 +359,28 @@ YaHS scaffolds of the same Flye assembly used by PolySplit-Allo. *Mixed* = scaff
 | *B. napus* NAM0 (4×) | 17 | 2 (156.6) | 3 / 9 | 56.2 | 73.8 | 98.7 |
 | *C. microcarpa* (4×) | 13 | 0 (0.0) | 2 / 6 | 64.5 | 92.9 | 99.0 |
 | *C. microcarpa* T1 (6×) | 20 | 0 (0.0) | 0 / 6 | 38.8 | 89.1 | 96.2 |
+
+### Table S13. PolySplit-Allo and scaffold-first on hifiasm instead of Flye assemblies (HiFi)
+
+The HiFi reads were assembled with hifiasm (v0.19.8, `-l0`, `drivers/run_polysplit.sh --assembler hifiasm`), and
+PolySplit-Allo and the scaffold-first baseline (`baselines/subphaser/run_scaffold_first.sh`, automatic or true
+homoeologous groups) were run on these contigs with the same full Hi-C data, settings and read truth as the Flye
+runs. Cells give read accuracy (%); contig accuracy is the bp-weighted accuracy of labelled, pure, anchored contigs.
+
+| Genome | assembler | contigs, size, N50 | PolySplit-Allo contig acc. | PolySplit-Allo read acc. | SubPhaser, automatic groups | SubPhaser, true groups |
+|---|---|---|---|---|---|---|
+| *B. napus* NAM0 (4×) | Flye | 1,217, 992 Mb, 4.8 Mb | 99.1 | 98.7 | 56.2 | 73.8 |
+| *B. napus* NAM0 (4×) | hifiasm | 641, 1,021 Mb, 15.8 Mb | 87.4 (98.6 before repair) | 86.1 (96.6 before repair) | 72.0 | 89.0 |
+| *C. microcarpa* (4×) | Flye | 198, 361 Mb, 10.5 Mb | 100.0 | 99.0 | 64.5 | 92.9 |
+| *C. microcarpa* (4×) | hifiasm | 1,012, 409 Mb, 14.8 Mb | 97.9 | 98.2 | 84.0 | 93.3 |
+| *C. microcarpa* T1 (6×) | Flye | 1,010, 591 Mb, 2.0 Mb | 97.8 | 96.2 | 38.8 | 89.2 |
+| *C. microcarpa* T1 (6×) | hifiasm | 999, 624 Mb, 5.9 Mb | 97.8 | 96.1 | 54.9 | 89.3 |
+
+On the *Camelina* assemblies PolySplit-Allo gives the same accuracy with either pre-assembler. On *B. napus* the
+hifiasm contigs approach chromosome length; paralogous chromosomes from the ancient *Brassica* triplication then
+share more 33-mers than homoeologs (for example N14 with N11 and N17, all in the C subgenome), and the repair step,
+which assumes a contig's strongest partner is its homoeolog, flips 8 large contigs (120 Mb). Labels before the
+repair step are 98.6% correct by contig length. On Flye's shorter contigs these paralog links stay below τ_H.
 
 ## Data and Code Availability
 - **Sequencing data.** *Camelina microcarpa* reads and assemblies: EBI-ENA accession PRJEB96055;
