@@ -365,7 +365,7 @@ YaHS scaffolds of the same Flye assembly used by PolySplit-Allo. *Mixed* = scaff
 The HiFi reads were assembled with hifiasm (v0.19.8, `-l0`, `drivers/run_polysplit.sh --assembler hifiasm`), and
 PolySplit-Allo and the scaffold-first baseline (`baselines/subphaser/run_scaffold_first.sh`, automatic or true
 homoeologous groups) were run on these contigs with the same full Hi-C data, settings and read truth as the Flye
-runs. Cells give read accuracy (%); contig accuracy is the bp-weighted accuracy of labelled, pure, anchored contigs.
+runs. For *Camelina*, hifiasm was also run with the ONT reads added (`--ul`), giving assemblies of reference size. Cells give read accuracy (%); contig accuracy is the bp-weighted accuracy of labelled, pure, anchored contigs.
 
 | Genome | assembler | contigs, size, N50 | PolySplit-Allo contig acc. | PolySplit-Allo read acc. | SubPhaser, automatic groups | SubPhaser, true groups |
 |---|---|---|---|---|---|---|
@@ -373,10 +373,12 @@ runs. Cells give read accuracy (%); contig accuracy is the bp-weighted accuracy 
 | *B. napus* NAM0 (4×) | hifiasm | 641, 1,021 Mb, 15.8 Mb | 87.4 (98.6 before repair) | 86.1 (96.6 before repair) | 72.0 | 89.0 |
 | *C. microcarpa* (4×) | Flye | 198, 361 Mb, 10.5 Mb | 100.0 | 99.0 | 64.5 | 92.9 |
 | *C. microcarpa* (4×) | hifiasm | 1,012, 409 Mb, 14.8 Mb | 97.9 | 98.2 | 84.0 | 93.3 |
+| *C. microcarpa* (4×) | hifiasm, HiFi + ONT | 337, 384 Mb, 16.2 Mb | 99.9 | 99.2 | 49.4 | 93.6 |
 | *C. microcarpa* T1 (6×) | Flye | 1,010, 591 Mb, 2.0 Mb | 97.8 | 96.2 | 38.8 | 89.2 |
 | *C. microcarpa* T1 (6×) | hifiasm | 999, 624 Mb, 5.9 Mb | 97.8 | 96.1 | 54.9 | 89.3 |
+| *C. microcarpa* T1 (6×) | hifiasm, HiFi + ONT | 397, 608 Mb, 11.3 Mb | 98.1 | 96.3 | 51.3 | 90.4 |
 
-On the *Camelina* assemblies PolySplit-Allo gives the same accuracy with either pre-assembler. On *B. napus* the
+On the *Camelina* assemblies PolySplit-Allo gives the same accuracy with either pre-assembler, including the near-complete HiFi + ONT + Hi-C assemblies, and stays ahead of scaffold-first even when SubPhaser is given the true homoeologous groups. On *B. napus* the
 hifiasm contigs approach chromosome length; paralogous chromosomes from the ancient *Brassica* triplication then
 share more 33-mers than homoeologs (for example N14 with N11 and N17, all in the C subgenome), and the repair step,
 which assumes a contig's strongest partner is its homoeolog, flips 8 large contigs (120 Mb). Labels before the
